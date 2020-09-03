@@ -41,9 +41,11 @@ Bonus:
 **Temps de dev: 2 semaines.**
 
 # Work organization
-### Getting started with: 1 day
 
-1. **PRG Pattern**:
+### I. Getting started with
+#### Time: 2 days
+
+1.1 **PRG Pattern**:
 
   Post/Redirect/Get is a web development pattern that attempts to avoid an HTTP POST request to be sent twice by returning a redirect page before validating the data and returning the destination page.
 
@@ -53,21 +55,30 @@ Bonus:
   | HTML Form  | receives $_POST  | receives header       | receives $_GET |
   | method POST| sends 303 header | redirects to new page | does whatever  |
 
-2. **CDM**:
+1.2 **CDM**:
 
   A *conceptual data model* is a map of concepts and their relationships used for databases.
   It describes the things of significance to an organization (entity classes), about which it is inclined to collect information, and its characteristics (attributes) and the associations between pairs of those things of significance (relationships).
 
-  2.1 **DSD**:
+1.2.1 **DSD**:
 
   A *data structure diagram* is a data model or diagram used to describe conceptual data models by providing graphical notations which document entities and their relationships, and the constraints that bind them.
 
-3. **MVC**:
+1.3 **MVC**:
 
   The *model-view-control* pattern, originally formulated in the late 70s, is a software architecture pattern built on the basis of keeping the presentation of data (views) separate from the methods that interact with the data (controllers and/or models).
 
   ![logo](https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/MVC-Process.svg/1200px-MVC-Process.svg.png)
 
-  3.1 **OOP**:
+1.4 **OOP**:
 
-    https://openclassrooms.com/fr/courses/1665806-programmez-en-oriente-objet-en-php
+  https://openclassrooms.com/fr/courses/1665806-programmez-en-oriente-objet-en-php
+
+  https://www.youtube.com/watch?v=r_NiFqLvfsc&list=PLjwdMgw5TTLVDKy8ikf5Df5fnMqY-ec16&index=1
+
+### II. Work distribution:
+#### Time: 3 days
+
+- Sign in and sign up to dashboard / _s'inscrire et accéder au dashboard_ : **Philippe PERECHODOV**
+- List client's products / _lister les produits du client_ : **Yacine SBAI**
+- Products modification (create, edit and delete) / _modification des produits (insérer, modifier et supprimer)_ : **Sergio NUNEZ MENESES**
