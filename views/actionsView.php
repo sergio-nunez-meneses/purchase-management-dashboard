@@ -14,17 +14,17 @@ ob_start();
     <form method="POST" action="/">
       <h4 class="p-3 text-center font-weight-bold text-primary">Insert new product</h4>
       <div class="form-group">
-        <input class="form-control" type="number" name="product-id" placeholder="id" required>
+        <input class="form-control" type="number" name="product-id" placeholder="ID" required>
       </div>
       <div class="form-group">
-        <input class="form-control" type="text" name="product-name" placeholder="name" required>
+        <input class="form-control" type="text" name="product-name" placeholder="Name" required>
       </div>
       <div class="form-group">
-        <input class="form-control" type="number" name="product-reference" placeholder="reference" required>
+        <input class="form-control" type="number" name="product-reference" placeholder="Reference number" required>
       </div>
       <div class="form-group">
         <select class="form-control" name="product-category[]" required>
-          <option class="text-light">category</option>
+          <option class="text-light">Category</option>
           <option value="Electroménager">Electroménager</option>
           <option value="TV-HIFI">TV-HIFI</option>
           <option value="Bricolage">Bricolage</option>
@@ -37,32 +37,35 @@ ob_start();
         </select>
       </div>
       <div class="form-group">
-        <input class="form-control" type="text" name="product-price" placeholder="price" required>
+        <input class="form-control" type="text" name="product-price" placeholder="Price" required>
       </div>
       <div class="form-group">
-        <input class="form-control" type="date" name="purchase-date" placeholder="date" required>
+        <input class="form-control" type="date" name="purchase-date" required>
       </div>
       <div class="form-group">
-        <input class="form-control" type="date" name="warranty-date" placeholder="warranty" required>
+        <input class="form-control" type="date" name="warranty-date" required>
       </div>
       <div class="form-group">
         <select class="form-control" name="purchase-place[]" required>
-          <option class="text-light">purchase type</option>
+          <option class="text-light">Sale type</option>
           <option value="Direct">Direct</option>
           <option value="Online">Online</option>
         </select>
       </div>
       <div class="form-group">
-        <input class="form-control" type="text" name="place-adress" placeholder="adress" required>
+        <input class="form-control" type="text" name="place-address" placeholder="Seller address" required>
       </div>
       <div class="form-group">
-        <textarea class="form-control" name="product-maintenance" rows="2" cols="80" required>maintenance advice</textarea>
+        <textarea class="form-control" name="product-maintenance" rows="2" cols="80" required>Maintenance advice</textarea>
       </div>
       <div class="form-group">
-        <input type="file" name="myfile" multiple>
+        <input type="hidden" name="stored_receipt" value="">
       </div>
       <div class="form-group">
-        <textarea class="form-control" name="user-manual" rows="2" cols="80">user manual</textarea>
+        <input type="file" name="purchase-receipt[]" multiple>
+      </div>
+      <div class="form-group">
+        <textarea class="form-control" name="user-manual" rows="2" cols="80">User manual</textarea>
       </div>
       <div class="form-group">
         <input class="form-control" type="hidden" name="user-id" value="1">

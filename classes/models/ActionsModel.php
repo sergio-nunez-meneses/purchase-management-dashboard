@@ -3,11 +3,11 @@
 class ActionsModel extends Database
 {
 
-  public function user_exists($username)
+  public function user_exists($user_id)
   {
-    $user = $this->run_query('SELECT login FROM users WHERE login = :username', ['username' => $username])->fetch();
+    $user = $this->run_query('SELECT * FROM users WHERE id = :user_id', ['user_id' => $user_id])->fetch();
 
-    if ($username === $user['login'])
+    if ($user_id == $user['id'])
     {
       return true;
     } else
@@ -22,9 +22,9 @@ class ActionsModel extends Database
     return $user;
   }
 
-  public function create_product($name, $reference, $category, $price, $purchase_date, $warranty_date, $place, $adress, $maintenance, $receipt, $manual, $user_id)
+  public function create_product($name, $reference, $category, $price, $purchase_date, $warranty_date, $place, $address, $maintenance, $receipt, $manual, $user_id)
   {
-    $this->run_query('INSERT INTO products VALUES (NULL, :name, :reference, :category, :price, :purchase_date, :warranty_date, :place, :adress, :maintenance, :receipt, :manual, :user_id)', [
+    $this->run_query('INSERT INTO products VALUES (NULL, :name, :reference, :category, :price, :purchase_date, :warranty_date, :place, :address, :maintenance, :receipt, :manual, :user_id)', [
       'name' => $name,
       'reference' => $reference,
       'category' => $category,
@@ -32,7 +32,7 @@ class ActionsModel extends Database
       'purchase_date' => $purchase_date,
       'warranty_date' => $warranty_date,
       'place' => $place,
-      'adress' => $adress,
+      'address' => $address,
       'maintenance' => $maintenance,
       'receipt' => $receipt,
       'manual' => $manual,
