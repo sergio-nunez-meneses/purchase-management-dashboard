@@ -35,7 +35,7 @@ require('include/auto_class_loader.php');
       echo 'Login : ' . $user['login'] . '<br>';
       echo 'Mot de passe : ' . $user['pwd'] . '<br>';
 
-     ?>
+    ?>
 
   </body>
 </html>
