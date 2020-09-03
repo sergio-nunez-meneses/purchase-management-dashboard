@@ -3,7 +3,7 @@ PHP Orienté Objet et MySQL
 
 Ce dashboard devra être sécurisé par un système de login
 
-1. Il doit permettre de :
+1. Il doit permettre de  :
 
   1. Lister les produits
   2. Modifier un produit
