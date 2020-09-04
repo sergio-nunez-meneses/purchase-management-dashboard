@@ -16,10 +16,16 @@ class ActionsModel extends Database
     }
   }
 
-  public function get_user($username)
+  public function get_user($user_id)
   {
-    $user = $this->run_query('SELECT * FROM users WHERE login = :username', ['username' => $username])->fetch();
+    $user = $this->run_query('SELECT * FROM users WHERE id = :user_id', ['user_id' => $user_id])->fetch();
     return $user;
+  }
+
+  public function get_product($product_id)
+  {
+    $product = $this->run_query('SELECT * FROM products WHERE id = :product_id', ['product_id' => $product_id])->fetch();
+    return $product;
   }
 
   public function create_product($name, $reference, $category, $price, $purchase_date, $warranty_date, $place, $address, $maintenance, $receipt, $manual, $user_id)
