@@ -18,7 +18,8 @@
 
     <!-- Style CSS -->
     <link rel="stylesheet" type="text/css" href="public/CSS/style.css">
-
+    <?php echo $specialStyleCSS; ?>
+  
   </head>
 
   <body>

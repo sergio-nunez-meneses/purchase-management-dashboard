@@ -1,8 +1,12 @@
-<?php $title = 'Dashboard ACS - Test'; ?>
+<?php
+$title = 'Dashboard ACS - Test';
+$specialStyleCSS = null;
 
-<?php ob_start(); ?>
+ob_start(); ?>
 
 <p>Login et Passaword OK : page de l'utilisateur</p>
+
+<a href="index.php">Retour</a>
 
 <?php
 echo ID . '<br>';

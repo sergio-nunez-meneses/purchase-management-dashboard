@@ -5,7 +5,7 @@ class UsersController
 
   public static function sign_in()
   {
-      session_start();
+      UsersController::user_logout();
       require('views/sign_inView.php');
   }
 
@@ -17,7 +17,7 @@ class UsersController
   public static function check_user_login()
   {
       $check_user = (new Sign_inModel())->test_User_Login(htmlspecialchars($_POST['user_login']));
-      if (isset($check_user['login']) AND htmlspecialchars($_POST['user_pwd']) === $check_user['pwd']) {
+      if (isset($check_user['login']) AND htmlspecialchars($_POST['user_password']) === $check_user['pwd']) {
 
           define('ID', $check_user['id']);
           define('LOGIN', $check_user['login']);
@@ -41,5 +41,16 @@ class UsersController
       $_SESSION['logged'] = true;
       require('views/testView.php');
   }
+
+  public static function user_logout()
+  {
+      session_start ();
+      $_SESSION = array();
+      session_destroy();
+      unset($_SESSION);
+      $_SESSION = null;
+      $_SESSION['logged'] = false;
+  }
+
 
 }

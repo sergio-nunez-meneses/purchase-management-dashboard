@@ -11,13 +11,14 @@ try {
         }
         elseif ($_GET['user'] == 'logged') {
 
-            $login_By_User = htmlspecialchars($_POST['user_login']);
-            $pwd_By_User = htmlspecialchars($_POST['user_pwd']);
+            if (!empty(htmlspecialchars($_POST['user_login'])) AND !empty(htmlspecialchars($_POST['user_password']))) {
 
-            if (!empty($login_By_User) AND !empty($pwd_By_User) AND isset($login_By_User) AND isset($pwd_By_User)) {
+                $login_By_User = htmlspecialchars($_POST['user_login']);
+                $pwd_By_User = htmlspecialchars($_POST['user_password']);
 
-                $user_Login_Result = UsersController::check_user_login();
-
+                if (isset($login_By_User) AND isset($pwd_By_User)) {
+                  UsersController::check_user_login();
+                }
             }
             else {
                 throw new Exception('Indiquez le nom du compte et le mot de passe pour accéder à votre espace privé ou cliquez sur "créer mon compte" pour créer un nouvel espace privé.');
