@@ -55,6 +55,8 @@ class ActionsController
         {
           (new ActionsModel())->delete_product($id);
           $success_msg .= 'Product deleted <br>';
+          echo $success_msg;
+          return;
         }
       } else
       {

@@ -9,7 +9,6 @@ class Database
   public function __construct()
   {
     $this->pdo = new PDO('mysql:host=' . DB_HOST . ';dbname=' . DB_NAME . ';charset=' . DB_CHAR, DB_USER, DB_PWD, PDO_OPTIONS);
-
     // echo 'Connected to ' . DB_NAME . '<br><hr>'; // just for debugging
   }
 
