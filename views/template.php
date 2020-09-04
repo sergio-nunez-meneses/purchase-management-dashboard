@@ -17,7 +17,7 @@
     <script src="https://kit.fontawesome.com/fbdd9c8340.js" crossorigin="anonymous"></script>
 
     <!-- Style CSS -->
-    <link rel="stylesheet" href="public/CSS/style.css">
+    <link rel="stylesheet" type="text/css" href="public/CSS/style.css">
 
   </head>
 

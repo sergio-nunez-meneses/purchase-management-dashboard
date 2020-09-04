@@ -1,0 +1,28 @@
+#page {
+  background-image: url("../images/sign_in_background.jpg"); /* Adresse en relatif donc par rapport au fichier .css */
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height:100vh;
+  width: auto;
+  display: flex;
+}
+
+.contenu {
+  display: flex;
+  flex-direction: column;
+  align-items:flex-start;
+  margin-left: 10%;
+}
+
+/* header {
+  display: block;
+  margin-top: 50%;
+} */
+
+#logo img {
+  width: 30%;
+}
+
+h1, h2, .instructions {
+  color: white;
+}

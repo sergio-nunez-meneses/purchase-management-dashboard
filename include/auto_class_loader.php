@@ -7,6 +7,8 @@ function loader($class_name) {
 
   if ($class_name === 'Database') {
     $parent_folder = 'database/';
+  } elseif (substr($class_name, -10) === 'Controller') {
+    $parent_folder = 'controllers/';
   } elseif (substr($class_name, -5) === 'Model') {
     $parent_folder = 'models/';
   }
