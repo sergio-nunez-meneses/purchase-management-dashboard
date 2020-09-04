@@ -5,8 +5,6 @@ class ActionsController
 
   public static function actions_form()
   {
-    $action = '';
-
     if ($_SERVER['REQUEST_METHOD'] == 'POST')
     {
       if (isset($_POST['create-product']))
@@ -22,7 +20,6 @@ class ActionsController
       {
         $action = 'delete';
       }
-      echo "action_forms: $action<br>";
       ActionsController::actions($action);
     }
     require('views/actionsView.php');
@@ -31,19 +28,40 @@ class ActionsController
   public static function actions($action)
   {
     $error = false;
-    $user_id = $stored_user = $success_msg = $error_msg = '';
+    $user_id = $success_msg = $error_msg = '';
 
-    var_dump($_FILES);
-    echo "actions: $action<br>";
-
-    // check if user is logged
+    // if (isset($_SESSION['logged']) && ($_SESSION['logged'] === true))
     if (empty($action))
     {
-      $error = true;
-      $error_msg .= 'Failed to perform requested action <br>';
-      echo $error_msg;
+      echo 'Failed to perform requested action <br>';
     } else
     {
+      if (empty($_POST['product-id']))
+      {
+        $error = true;
+        $error_msg .= 'Product id cannot be empty <br>';
+      } elseif ((new ActionsModel())->product_exists($_POST['product-id']) === false)
+      {
+        $error = true;
+        $error_msg .= "Product id doesn't exist <br>";
+      } else
+      {
+        $id = filter_var($_POST['product-id'], FILTER_SANITIZE_STRING);
+      }
+
+      if ($error === false)
+      {
+        if ($action === 'delete')
+        {
+          (new ActionsModel())->delete_product($id);
+          $success_msg .= 'Product deleted <br>';
+        }
+      } else
+      {
+        echo $error_msg;
+        return;
+      }
+
       if (empty($_POST['product-name']))
       {
         $error = true;
@@ -116,11 +134,11 @@ class ActionsController
       if (empty($_POST['place-address']))
       {
         $error = true;
-        $error_msg .= 'Seller\'s address cannot be empty <br>';
+        $error_msg .= "Seller's address cannot be empty <br>";
       } elseif (strlen($_POST['place-address']) < 10)
       {
         $error = true;
-        $error_msg .= 'Seller\'s address must contain more than 10 characters <br>';
+        $error_msg .= "Seller's address must contain more than 10 characters <br>";
       } else
       {
         $address = filter_var($_POST['place-address'], FILTER_SANITIZE_STRING);
@@ -140,35 +158,44 @@ class ActionsController
       }
 
       // check $_FILES bug
-      $receipt = 'someFile.jpg';
+      $receipt = 'someOtherFile.png';
+
       $manual = filter_var($_POST['user-manual'], FILTER_SANITIZE_STRING);
 
       if (empty($_POST['user-id']))
       {
         $error = true;
-        $error_msg .= 'User id cannot be empty';
+        $error_msg .= 'User id cannot be empty <br>';
       } elseif ((new ActionsModel())->user_exists($_POST['user-id']) === false)
       {
         $error = true;
-        $error_msg .= 'User does not exist';
+        $error_msg .= 'You need to sign up to perform this action <br>';
       } else
       {
         $user_id = filter_var($_POST['user-id'], FILTER_SANITIZE_STRING);
       }
 
-      $user_id = filter_var($_POST['user-id'], FILTER_SANITIZE_STRING);
-
       if ($error === false)
       {
-        // sequence of conditions to check the action and call the corresponding method
         if ($action === 'create')
         {
           (new ActionsModel())->create_product($name, $reference, $category, $price, $purchase_date, $warranty_date, $place, $address, $maintenance, $receipt, $manual, $user_id);
-          echo "$action<br>";
+
+          $success_msg .= 'Product inserted! <br>';
+          echo $success_msg;
+          return;
+        } elseif ($action === 'edit')
+        {
+          (new ActionsModel())->edit_product($id, $name, $reference, $category, $price, $purchase_date, $warranty_date, $place, $address, $maintenance, $receipt, $manual, $user_id);
+
+          $success_msg .= 'Product edited! <br>';
+          echo $success_msg;
+          return;
         }
       } else
       {
-        echo "$error_msg<br>";
+        echo $error_msg;
+        return;
       }
     }
   }

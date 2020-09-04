@@ -124,10 +124,10 @@ function validateForm() {
 }
 
 ACTION_TAB.addEventListener('click', displayForms);
-CREATE_BTN.addEventListener('click', (e) => {
-  e.preventDefault();
-  validateForm();
-});
+// CREATE_BTN.addEventListener('click', (e) => {
+//   e.preventDefault();
+//   validateForm();
+// });
 ERROR_DIV.addEventListener('click', () => {
   errorContainer.classList.add('hidden');
 });
