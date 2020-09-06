@@ -5,24 +5,158 @@
   min-height:100vh;
   width: auto;
   display: flex;
+  font-family: "Arial", "sans serif";
 }
 
 .contenu {
-  display: flex;
-  flex-direction: column;
-  align-items:flex-start;
   margin-left: 10%;
+  margin-top: auto;
+  height: 90%;
 }
 
-/* header {
-  display: block;
-  margin-top: 50%;
-} */
+main {
+
+}
+
+#logo {
+  width: 5rem;
+}
 
 #logo img {
-  width: 30%;
+  width: 100%;
 }
 
-h1, h2, .instructions {
+h1, h2, h3, .instructions {
   color: white;
+}
+
+h1 {
+  font-style: italic;
+  font-size: 4rem;
+  margin-bottom: 10%;
+  font-family: "Helvetica LT Std", "sans serif";
+  text-shadow: 1px 1px 2px black;
+}
+
+h2 {
+  font-size: 3rem;
+  margin: 0px;
+  text-shadow: 1px 1px 2px black;
+}
+
+h3 {
+  font-size: 2rem;
+  font-family: "Helvetica LT Std", "sans serif";
+}
+
+.instructions {
+  margin-top: 3%;
+  margin-bottom: 5%;
+}
+
+#oubli_form {
+  text-align: right;
+}
+
+#oubli_form a {
+  text-decoration: none;
+  color: white;
+  text-align: right;
+  transition: all 0.3s ease-in-out;
+}
+
+#oubli_form span {
+  color: #f6b93b;
+}
+
+#oubli_form:hover a {
+  color: #f6b93b;
+}
+
+#oubli_form:hover span {
+  color: white;
+}
+
+#btn_valide_connexion {
+  color: black;
+  font-weight: bold;
+  background-color: #f6b93b;
+  border-radius: 10px;
+  transition: all 0.3s ease-in-out;
+  text-decoration: none;
+  word-spacing: 1rem;
+}
+
+#btn_valide_connexion:hover {
+  background-color: #fad390;
+}
+
+footer {
+  color: white;
+  margin-top: auto;
+  margin-bottom: 2px;
+  font-style: italic;
+  text-shadow: 2px 2px 5px black;
+  font-family: "Helvetica LT Std", "sans serif";
+  font-size: 130%;
+}
+footer a {
+  color: white;
+  text-shadow: 1px 1px 2px black;
+}
+
+footer a:hover {
+  text-decoration: none;
+  color: #f6b93b;
+  text-shadow: 1px 1px 2px black;
+}
+
+/* Modal */
+
+#modalSpyDev {
+  text-align: center;
+  color: black;
+}
+
+#modalSpyDev a {
+  color: black;
+}
+
+#modalSpyDev h3 {
+  color: black;
+}
+
+#modalSpyDev a:hover {
+  text-decoration: none;
+  color: #f6b93b;
+}
+
+#modalHeader {
+  background-color: #f6b93b;
+}
+
+#modalBody {
+  background-color: rgba(255, 255, 255, 0);
+}
+
+#modalFooter {
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+#close {
+  margin: auto;
+  color: black;
+  background-color: #f6b93b;
+}
+
+#github {
+  color: black;
+}
+
+#github:hover {
+  color: #f6b93b;
+}
+
+#github i {
+  font-size: 400%;
 }
