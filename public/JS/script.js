@@ -32,17 +32,19 @@ function validateForm() {
   let id = getName('product-id').value,
     name = getName('product-name').value,
     reference = getName('product-reference').value,
-    // category = getName('product-category').value,
+    category = getName('product-category[]').value,
     price = getName('product-price').value,
     date = getName('purchase-date').value,
     warranty = getName('warranty-date').value,
-    // saleType = getName('purchase-place').value,
+    // saleType = getName('purchase-place[]').value,
     sellerAddress = getName('place-address').value,
     maintenance = getName('product-maintenance').value,
     userId = getName('user-id').value,
     errorDisplay = getId('displayErrors'),
     error = false,
     errorMsg = '';
+
+  console.log(category);
 
   if (id.length == 0) {
     error = true;
@@ -78,10 +80,10 @@ function validateForm() {
     errorMsg += 'Price must be decimal number <br>';
   }
 
-  if (date.length == 0) {
-    error = true;
-    errorMsg += 'Date cannot be empty <br>';
-  }
+  // if (date.length == 0) {
+  //   error = true;
+  //   errorMsg += 'Date cannot be empty <br>';
+  // }
 
   // if (warranty.length == 0) {
   //   error = true;
@@ -98,7 +100,7 @@ function validateForm() {
 
   if (sellerAddress.length == 0) {
     error = true;
-    errorMsg += 'Seller\'s address cannot be empty <br>';
+    errorMsg += "Seller's address cannot be empty <br>";
   }
 
   if (maintenance.length == 0) {
@@ -114,12 +116,12 @@ function validateForm() {
     errorMsg += 'User id address cannot be empty <br>';
   }
 
-  if (error === true) {
+  if (error === false) {
+    CREATE_FORM.submit();
+  } else {
     errorContainer.classList.remove('hidden');
     displayErrors.innerHTML = errorMsg;
     return false;
-  } else {
-    CREATE_FORM.submit();
   }
 }
 

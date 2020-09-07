@@ -76,6 +76,7 @@ class ActionsModel extends Database
       'user_id' => $user_id,
       'id' => $id,
     ]);
+    echo 'edit_product model <br>';
   }
 
   public function archive_product($product_id)

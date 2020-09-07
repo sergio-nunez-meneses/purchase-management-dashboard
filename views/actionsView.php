@@ -9,6 +9,18 @@ ob_start();
     <p id="displayErrors" class="lead font-italic text-white text-center"></p>
   </div>
 </div>
+<!-- DISPLAY INFOS/ERRORS -->
+<?php
+if (($_SERVER['REQUEST_METHOD'] == 'GET') && (isset($_GET['alert']) === TRUE) && (isset($_GET['info']) === TRUE)) {
+  ?>
+  <div class="container border border-white p-3">
+    <div class="alert alert-<?php echo $_GET['alert']; ?> text-center" role="alert">
+      <p class="lead"><?php echo $_GET['info']; ?></p>
+    </div>
+  </div>
+  <?php
+}
+?>
 <!-- INSERT PRODUCT -->
 <div class="container border py-3 bg-light">
   <div class="d-flex justify-content-between">
@@ -20,18 +32,18 @@ ob_start();
   <div id="createFormContainer">
     <form id="createForm" method="POST" action="/">
       <h4 class="p-3 text-center font-weight-bold text-primary">Insert new product</h4>
-      <div class="form-group">
+      <!-- <div class="form-group">
         <input class="form-control" type="number" name="product-id" placeholder="ID">
+      </div> -->
+      <div class="form-group">
+        <input class="form-control" type="text" name="product-name" placeholder="Name" required>
       </div>
       <div class="form-group">
-        <input class="form-control" type="text" name="product-name" placeholder="Name">
+        <input class="form-control" type="number" name="product-reference" placeholder="Reference number" required>
       </div>
       <div class="form-group">
-        <input class="form-control" type="number" name="product-reference" placeholder="Reference number">
-      </div>
-      <div class="form-group">
-        <select class="form-control" name="product-category[]">
-          <option class="text-light">Category</option>
+        <select class="form-control" name="product-category[]" required>
+          <option>Category</option>
           <option value="Electroménager">Electroménager</option>
           <option value="TV-HIFI">TV-HIFI</option>
           <option value="Bricolage">Bricolage</option>
@@ -44,38 +56,35 @@ ob_start();
         </select>
       </div>
       <div class="form-group">
-        <input class="form-control" type="text" name="product-price" placeholder="Price">
+        <input class="form-control" type="text" name="product-price" placeholder="Price" required>
       </div>
       <div class="form-group">
-        <input class="form-control" type="date" name="purchase-date">
+        <input class="form-control" type="date" name="purchase-date" required>
       </div>
       <div class="form-group">
-        <input class="form-control" type="date" name="warranty-date">
+        <input class="form-control" type="date" name="warranty-date" required>
       </div>
       <div class="form-group">
-        <select class="form-control" name="purchase-place[]">
-          <option class="text-light">Sale type</option>
+        <select class="form-control" name="purchase-place[]" required>
+          <option>Sale type</option>
           <option value="Direct">Direct</option>
           <option value="Online">Online</option>
         </select>
       </div>
       <div class="form-group">
-        <input class="form-control" type="text" name="place-address" placeholder="Seller address">
+        <input class="form-control" type="text" name="place-address" placeholder="Seller address" required>
       </div>
       <div class="form-group">
-        <textarea class="form-control" name="product-maintenance" rows="2" cols="80">Maintenance advice: nope, nothing else to say!</textarea>
+        <textarea class="form-control" name="product-maintenance" rows="2" cols="80" required>Maintenance advice: nope, nothing else to say!</textarea>
       </div>
       <div class="form-group">
-        <input type="hidden" name="stored_receipt" value="">
+        <input type="file" multiple name="purchase-receipt[]" required>
       </div>
       <div class="form-group">
-        <input type="file" multiple name="purchase-receipt[]">
+        <textarea class="form-control" name="user-manual" rows="2" cols="80">User manual: it's on the internet bro!</textarea>
       </div>
       <div class="form-group">
-        <textarea class="form-control" name="user-manual" rows="2" cols="80">User manual: it' on the internet bro!</textarea>
-      </div>
-      <div class="form-group">
-        <input class="form-control" type="number" name="user-id" value="1">
+        <input class="form-control" type="number" name="user-id" value="1" required>
       </div>
       <div class="form-group text-center">
         <button class="btn btn-md px-5 bg-primary text-white" type="submit" name="create-product">Create</button>
@@ -87,7 +96,7 @@ ob_start();
     <form id="editForm" method="POST" action="/">
       <h4 class="p-3 text-center font-weight-bold text-primary">Edit product</h4>
       <div class="form-group">
-        <input class="form-control" type="number" name="product-id" placeholder="ID">
+        <input class="form-control" type="number" name="product-id" placeholder="ID" required>
       </div>
       <div class="form-group">
         <input class="form-control" type="text" name="product-name" placeholder="Name">
@@ -97,7 +106,7 @@ ob_start();
       </div>
       <div class="form-group">
         <select class="form-control" name="product-category[]">
-          <option class="text-light">Category</option>
+          <option>Category</option>
           <option value="Electroménager">Electroménager</option>
           <option value="TV-HIFI">TV-HIFI</option>
           <option value="Bricolage">Bricolage</option>
@@ -120,7 +129,7 @@ ob_start();
       </div>
       <div class="form-group">
         <select class="form-control" name="purchase-place[]">
-          <option class="text-light">Sale type</option>
+          <option>Sale type</option>
           <option value="Direct">Direct</option>
           <option value="Online">Online</option>
         </select>
@@ -135,10 +144,13 @@ ob_start();
         <input type="hidden" name="stored_receipt" value="">
       </div>
       <div class="form-group">
-        <input type="file" multiple name="purchase-receipt[]">
+        <input class="form-control" type="text" name="" placeholder="Here goes, hidden, the stored receipt image when editing">
       </div>
       <div class="form-group">
-        <textarea class="form-control" name="user-manual" rows="2" cols="80">User manual: it' on the internet bro!</textarea>
+        <input class="" type="file" multiple name="purchase-receipt[]">
+      </div>
+      <div class="form-group">
+        <textarea class="form-control" name="user-manual" rows="2" cols="80">User manual: it's on the internet bro!</textarea>
       </div>
       <div class="form-group">
         <input class="form-control" type="number" name="user-id" value="1">

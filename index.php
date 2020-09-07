@@ -2,7 +2,6 @@
 require('include/auto_class_loader.php');
 
 // $url = explode('/', $_SERVER['REQUEST_URI']);
-// var_dump($url);
 
 if ($_SERVER['REQUEST_URI'] === '/' || $_SERVER['REQUEST_URI'] === '') {
   // echo 'url: ' . $_SERVER['REQUEST_URI'] . '<br>';
