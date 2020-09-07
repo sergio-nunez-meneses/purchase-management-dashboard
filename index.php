@@ -1,14 +1,12 @@
 <?php
 require('include/auto_class_loader.php');
 
-// $url = explode('/', $_SERVER['REQUEST_URI']);
+$url = explode('/', $_GET['url']);
 
-if ($_SERVER['REQUEST_URI'] === '/' || $_SERVER['REQUEST_URI'] === '') {
-  // echo 'url: ' . $_SERVER['REQUEST_URI'] . '<br>';
+if ($url[0] === '/' || $url[0] === '') {
   ActionsController::actions_form();
-} elseif ($_SERVER['REQUEST_URI'] === '/other') {
-  // echo 'url: ' . $_SERVER['REQUEST_URI'] . '<br>';
+} elseif ($url[0] === 'actions') {
+  ActionsController::actions_form();
 } else {
-  // echo 'url: ' . $_SERVER['REQUEST_URI'] . '<br>';
   ActionsController::actions_form();
 }

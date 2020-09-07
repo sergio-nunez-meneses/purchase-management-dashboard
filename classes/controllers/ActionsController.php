@@ -34,12 +34,10 @@ class ActionsController
     if (empty($action))
     {
       $error_msg = 'Failed to perform requested action <br>';
-      header("Location:/?alert=danger&info=$error_msg");
+      header("Location:/actions?alert=danger&info=$error_msg");
       return;
     } else
     {
-      echo 'action not empty <br>';
-
       if (empty($_POST['user-id']))
       {
         $error = TRUE;
@@ -159,14 +157,12 @@ class ActionsController
 
         if ($action === 'create')
         {
-          echo 'action create <br>';
-
           if ($error === FALSE)
           {
             (new ActionsModel())->create_product($name, $reference, $category, $price, $purchase_date, $warranty_date, $place, $address, $maintenance, $receipt, $manual, $user_id);
 
             $success_msg .= 'Product inserted! <br>';
-            header("Location:/alert=info&info=$success_msg");
+            header("Location:/actions?alert=info&info=$success_msg");
             return;
           } else
           {
@@ -175,8 +171,6 @@ class ActionsController
           }
         } else
         {
-          echo 'other action <br>';
-
           if (empty($_POST['product-id']))
           {
             $product_id = FALSE;
@@ -198,18 +192,18 @@ class ActionsController
               (new ActionsModel())->edit_product($id, $name, $reference, $category, $price, $purchase_date, $warranty_date, $place, $address, $maintenance, $receipt, $manual, $user_id);
 
               $success_msg .= 'Product edited! <br>';
-              header("Location:/alert=info&info=$success_msg");
+              header("Location:/actions?alert=info&info=$success_msg");
               return;
             } elseif ($action === 'delete')
             {
               (new ActionsModel())->delete_product($id);
               $success_msg .= 'Product deleted <br>';
-              header("Location:/?alert=success&info=$success_msg");
+              header("Location:/actions?alert=success&info=$success_msg");
               return;
             }
           } else {
             $success_msg .= 'Product deleted <br>';
-            header("Location:/?alert=danger&info=$error_msg");
+            header("Location:/actions?alert=danger&info=$error_msg");
             return;
           }
         }

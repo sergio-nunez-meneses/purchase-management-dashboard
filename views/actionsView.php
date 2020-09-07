@@ -2,7 +2,7 @@
 $title = 'Client Actions';
 ob_start();
 ?>
-<!-- ERROR OVERLAY -->
+<!-- JS ERROR OVERLAY -->
 <div id="errorContainer" class="hidden p-3">
   <div class="container border border-white mt-5 p-3">
     <h3 class="font-weight-bold text-white text-center">Sorry bro!:</h3>
@@ -32,9 +32,6 @@ if (($_SERVER['REQUEST_METHOD'] == 'GET') && (isset($_GET['alert']) === TRUE) &&
   <div id="createFormContainer">
     <form id="createForm" method="POST" action="/">
       <h4 class="p-3 text-center font-weight-bold text-primary">Insert new product</h4>
-      <!-- <div class="form-group">
-        <input class="form-control" type="number" name="product-id" placeholder="ID">
-      </div> -->
       <div class="form-group">
         <input class="form-control" type="text" name="product-name" placeholder="Name" required>
       </div>
