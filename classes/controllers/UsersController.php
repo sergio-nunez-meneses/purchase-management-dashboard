@@ -52,5 +52,22 @@ class UsersController
       $_SESSION['logged'] = false;
   }
 
+  public static function check_mail_recup_id()
+  {
+      $check_mail = (new RecupIdModel())->test_User_Mail(htmlspecialchars($_POST['mailRecupId']));
+      if (isset($check_mail['email'])) {
+          // Les variables
+          $to = htmlspecialchars($_POST['mailRecupId']);
+          $subject = 'My Personnal Dashboard - Mes identifiant et mot de passe';
+          $message = 'Login : ' . $check_mail['login'] . ' // Mot de passe : ' . $check_mail['pwd'];
+          $headers = 'From: My Personnal Dashboard';
+          // Envoi de l'email
+          // mail($to, $subject, $message, $headers); // A CONFIGURER !
+      }
+      else {
+          $infoMail = "Adresse email inconnue ou erronée.";
+      }
+
+  }
 
 }

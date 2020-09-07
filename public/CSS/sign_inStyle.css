@@ -8,14 +8,15 @@
   font-family: "Arial", "sans serif";
 }
 
+#titre {
+  flex-wrap: nowrap;
+  align-items: flex-start;
+}
+
 .contenu {
   margin-left: 10%;
   margin-top: auto;
   height: 90%;
-}
-
-main {
-
 }
 
 #logo {
@@ -33,7 +34,7 @@ h1, h2, h3, .instructions {
 h1 {
   font-style: italic;
   font-size: 4rem;
-  margin-bottom: 10%;
+  margin-bottom: 20%;
   font-family: "Helvetica LT Std", "sans serif";
   text-shadow: 1px 1px 2px black;
 }
@@ -50,12 +51,73 @@ h3 {
 }
 
 .instructions {
-  margin-top: 3%;
-  margin-bottom: 5%;
+  margin-top: 2%;
+  margin-bottom: 2%;
+  text-shadow: 1px 1px 2px black;
+  font-family: "Helvetica LT Std", "sans serif";
+  font-size: 1.5rem;
+  font-style: italic;
+  }
+
+/* Formulaire */
+
+.field {
+  width: 400px;
+  height: 70px;
+  margin-bottom: 10px;
 }
+
+.field input {
+  font-size: 1.5rem !important;
+  height: 70px !important;
+  border: 0px !important;
+  background-color: rgba(0, 0, 0, 0.6) !important;
+}
+
+::placeholder {
+  color: grey !important;
+  font-size: 1rem !important;
+  font-style: italic;
+}
+
+#user_login {
+  border-top-right-radius: 20px !important;
+  color: #f6b93b;
+}
+
+#user_password {
+  border-bottom-right-radius: 20px !important;
+  color: #f6b93b;
+}
+
+.field span {
+  background-color: rgba(0, 0, 0, 0.6);
+  /* border: 0px !important; */
+  border-left: 0px;
+  border-bottom: 0px;
+  border-top: 0px;
+  border-color: white;
+}
+
+#spanLogin {
+  width: 70px;
+  border-top-left-radius: 20px !important;
+  justify-content: center !important;
+}
+
+#spanPassword {
+  width: 70px;
+  border-bottom-left-radius: 20px !important;
+  justify-content: center !important;
+}
+
+/* Login ou MDP oublié */
 
 #oubli_form {
   text-align: right;
+  text-shadow: 1px 1px 2px black;
+  font-family: "Helvetica LT Std", "sans serif";
+  font-size: 1.2rem;
 }
 
 #oubli_form a {
@@ -77,6 +139,8 @@ h3 {
   color: white;
 }
 
+/* Connection button */
+
 #btn_valide_connexion {
   color: black;
   font-weight: bold;
@@ -90,6 +154,8 @@ h3 {
 #btn_valide_connexion:hover {
   background-color: #fad390;
 }
+
+/* Footer */
 
 footer {
   color: white;
@@ -111,32 +177,18 @@ footer a:hover {
   text-shadow: 1px 1px 2px black;
 }
 
-/* Modal */
-
-#modalSpyDev {
-  text-align: center;
-  color: black;
-}
-
-#modalSpyDev a {
-  color: black;
-}
-
-#modalSpyDev h3 {
-  color: black;
-}
-
-#modalSpyDev a:hover {
-  text-decoration: none;
-  color: #f6b93b;
-}
-
+/* Modal (All) */
 #modalHeader {
   background-color: #f6b93b;
 }
 
-#modalBody {
+#modalBody p {
+  font-style: italic;
   background-color: rgba(255, 255, 255, 0);
+}
+
+#modalBody p {
+  font-style: italic;
 }
 
 #modalFooter {
@@ -149,6 +201,26 @@ footer a:hover {
   background-color: #f6b93b;
 }
 
+/* Footer Modal */
+#modalFooterSpy {
+  text-align: center;
+  color: black;
+  font-family: "Helvetica LT Std", "sans serif";
+}
+
+#modalFooterSpy a {
+  color: black;
+}
+
+#modalFooterSpy h3 {
+  color: black;
+}
+
+#modalFooterSpy a:hover {
+  text-decoration: none;
+  color: #f6b93b;
+}
+
 #github {
   color: black;
 }
@@ -159,4 +231,11 @@ footer a:hover {
 
 #github i {
   font-size: 400%;
+}
+
+/* Recupid Modal */
+#modalRecupId {
+  text-align:left;
+  color: black;
+  font-family: "Helvetica LT Std", "sans serif";
 }

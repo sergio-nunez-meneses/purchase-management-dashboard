@@ -1,6 +1,7 @@
 <?php
 $title = 'Dashboard ACS - Test';
 $specialStyleCSS = null;
+$specialJS = null;
 
 ob_start(); ?>
 
