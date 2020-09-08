@@ -54,20 +54,28 @@ class UsersController
 
   public static function check_mail_recup_id()
   {
+      require('../classes/models/RecupIdModel.php');
+
+
       $check_mail = (new RecupIdModel())->test_User_Mail(htmlspecialchars($_POST['mailRecupId']));
+
+      // $check_mail['email'] = 'p.perechodov@codeur.online';
+
+
       if (isset($check_mail['email'])) {
           // Les variables
           $to = htmlspecialchars($_POST['mailRecupId']);
           $subject = 'My Personnal Dashboard - Mes identifiant et mot de passe';
-          $message = 'Login : ' . $check_mail['login'] . ' // Mot de passe : ' . $check_mail['pwd'];
+          // $message = 'Login : ' . $check_mail['login'] . ' // Mot de passe : ' . $check_mail['pwd'];
           $headers = 'From: My Personnal Dashboard';
           // Envoi de l'email
           // mail($to, $subject, $message, $headers); // A CONFIGURER !
+          $_POST['infoMail'] = '<div class="alert alert-success" role="alert">
+  Un e-mail a été envoyé à l\'adresse <br>"' . $_POST['mailRecupId'] . '"<br> avec vos identifiants et mot de passe.<br>Vous le recevrez dans quelques intants.</div>';
       }
       else {
-          $infoMail = "Adresse email inconnue ou erronée.";
+          $_POST['infoMail'] = '<div class="alert alert-danger" role="alert">L\'adresse e-mail <br>"' . $_POST['mailRecupId'] . '"<br> est inconnue ou erronée.<br>Voulez-vous <a href="">créer un compte</a> ?</div>';
       }
-
   }
 
 }

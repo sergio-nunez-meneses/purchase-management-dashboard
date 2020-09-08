@@ -28,29 +28,6 @@ try {
             throw new Exception('blablabla');
         }
     }
-
-    elseif (isset($_GET['mail'])) {
-      if ($_GET['mail'] == 'try') {
-        if (!empty(htmlspecialchars($_POST['mailRecupId']))) {
-
-            $mail_By_User = htmlspecialchars($_POST['mailRecupId']);
-
-            if (isset($mail_By_User)) {
-              UsersController::check_mail_recup_id();
-            }
-        }
-        else {
-            throw new Exception('Indiquez l\'e-mail que vous avez renseigné lors de la création de votre compte.');
-        }
-      }
-      elseif ($_GET['mail'] == 'OK') {
-        echo 'mail OK';
-      }
-      elseif ($_GET['mail'] == 'KO') {
-        echo 'mail KO';
-      }
-    }
-
     else {
         UsersController::sign_in();
     }

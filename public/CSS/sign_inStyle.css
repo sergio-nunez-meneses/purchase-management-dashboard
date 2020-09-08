@@ -2,7 +2,7 @@
   background-image: url("../images/sign_in_background.jpg"); /* Adresse en relatif donc par rapport au fichier .css */
   background-repeat: no-repeat;
   background-size: cover;
-  min-height:100vh;
+  min-height: 100vh;
   width: auto;
   display: flex;
   font-family: "Arial", "sans serif";
@@ -14,7 +14,7 @@
 }
 
 .contenu {
-  margin-left: 10%;
+  margin-left: 6%;
   margin-top: auto;
   height: 90%;
 }
@@ -82,12 +82,12 @@ h3 {
 
 #user_login {
   border-top-right-radius: 20px !important;
-  color: #f6b93b;
+  color: #f1c40f;
 }
 
 #user_password {
   border-bottom-right-radius: 20px !important;
-  color: #f6b93b;
+  color: #f1c40f;
 }
 
 .field span {
@@ -128,11 +128,11 @@ h3 {
 }
 
 #oubli_form span {
-  color: #f6b93b;
+  color: #f1c40f;
 }
 
 #oubli_form:hover a {
-  color: #f6b93b;
+  color: #f1c40f;
 }
 
 #oubli_form:hover span {
@@ -144,7 +144,7 @@ h3 {
 #btn_valide_connexion {
   color: black;
   font-weight: bold;
-  background-color: #f6b93b;
+  background-color: #f1c40f;
   border-radius: 10px;
   transition: all 0.3s ease-in-out;
   text-decoration: none;
@@ -173,22 +173,18 @@ footer a {
 
 footer a:hover {
   text-decoration: none;
-  color: #f6b93b;
+  color: #f1c40f;
   text-shadow: 1px 1px 2px black;
 }
 
-/* Modal (All) */
+/* Footer Modal */
 #modalHeader {
-  background-color: #f6b93b;
+  background-color: #f1c40f;
 }
 
 #modalBody p {
   font-style: italic;
   background-color: rgba(255, 255, 255, 0);
-}
-
-#modalBody p {
-  font-style: italic;
 }
 
 #modalFooter {
@@ -198,10 +194,9 @@ footer a:hover {
 #close {
   margin: auto;
   color: black;
-  background-color: #f6b93b;
+  background-color: #f1c40f;
 }
 
-/* Footer Modal */
 #modalFooterSpy {
   text-align: center;
   color: black;
@@ -218,7 +213,7 @@ footer a:hover {
 
 #modalFooterSpy a:hover {
   text-decoration: none;
-  color: #f6b93b;
+  color: #f1c40f;
 }
 
 #github {
@@ -226,16 +221,16 @@ footer a:hover {
 }
 
 #github:hover {
-  color: #f6b93b;
+  color: #f1c40f;
 }
 
 #github i {
   font-size: 400%;
 }
 
-/* Recupid Modal */
-#modalRecupId {
-  text-align:left;
-  color: black;
-  font-family: "Helvetica LT Std", "sans serif";
+/* RecupId Modal */
+#modalRecupId iframe {
+  height: 325px;
+  width: auto;
+  border: 0px;
 }

@@ -1,5 +1,6 @@
 <?php
 require('tools/sql.php');
+// require('../tools/sql.php');
 
 class Database
 {

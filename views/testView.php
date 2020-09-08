@@ -4,8 +4,7 @@ $specialStyleCSS = null;
 $specialJS = null;
 
 ob_start(); ?>
-
-<p>Login et Passaword OK : page de l'utilisateur</p>
+<p>Login et Password OK : page de l'utilisateur</p>
 
 <a href="index.php">Retour</a>
 
@@ -22,7 +21,9 @@ echo $_SESSION['pwd'];
 echo $_SESSION['email'];
 
 var_dump($_SESSION['logged']);
+?>
 
+<?php
 $content = ob_get_clean(); ?>
 
 <?php require('template.php'); ?>

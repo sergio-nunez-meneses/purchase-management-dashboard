@@ -65,6 +65,7 @@ ob_start(); ?>
 </div>
 
 
+
 <!-- Modal du footer -->
 <div class="modal fade" id="modalFooterSpy" tabindex="-1" aria-labelledby="modalSpyDev" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
@@ -80,18 +81,10 @@ ob_start(); ?>
 <div class="modal fade" id="modalRecupId" tabindex="-1" role="dialog" aria-labelledby="modalRecupId" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
-            <?php
-                include('views/modalRecupId.php');
-            ?>
+            <iframe class="rounded" src="views/modalRecupIdView.php"></iframe>
         </div>
     </div>
 </div>
-
-
-
-
-
-
 
 <?php
 $content = ob_get_clean();
