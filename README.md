@@ -1,33 +1,29 @@
-Projet Dashboard - Gestion d'achat de matériel
-PHP Orienté Objet et MySQL
+# Projet Dashboard - _Gestion d'achat de matériel_
+#### _PHP Orienté Objet et MySQL_
 
-Ce dashboard devra être sécurisé par un système de login
+Ce dashboard devra être sécurisé par un système de login. Il doit permettre de  :
 
-1. Il doit permettre de  :
+  - Lister les produits
+  - Modifier un produit
+  - Supprimer un produit
+  - Ajouter un produit
 
-  1. Lister les produits
-  2. Modifier un produit
-  3. Supprimer un produit
-  4. Ajouter un produit
+Pour chaque produit on doit rentrer les informations suivantes :
 
-2. Pour chaque produit on doit rentrer les informations suivantes :
+  - Nom du produit
+  - Référence du produit
+  - Catégorie (Electroménager, TV-HIFI, Bricolage, Voiture....) Le produit n'appartiendra qu'à une seule catégorie
+  - Prix
+  - Date d'achat
+  - Date de fin de garantie
+  - Lieux d'achat (En vente directe ou e-commerce) :
+    - Si vente directe - Possibilité de saisir l'adresse
+    - Si e-commerce - Possibilité de saisir l'url du e-commerce
+  - Zone de saisie pour rentrer touts les conseils d'entretien du produit
+  - Photo du ticket d'achat
+  - Manuel d'utilisation (Pas obligatoire s'il n'existe pas)
 
-  1. Nom du produit
-  2. Référence du produit
-  3. Catégorie (Electroménager, TV-HIFI, Bricolage, Voiture....) Le produit n'appartiendra qu'à une seule catégorie
-  4. Prix
-  5. Date d'achat
-  6. Date de fin de garantie
-  7. Lieux d'achat (En vente directe ou e-commerce) :
-
-    7.1 Si vente directe - Possibilité de saisir l'adresse
-
-    7.2 Si e-commerce - Possibilité de saisir l'url du e-commerce
-  8. Zone de saisie pour rentrer touts les conseils d'entretien du produit
-  9. Photo du ticket d'achat
-  10. Manuel d'utilisation (Pas obligatoire s'il n'existe pas)
-
-Il faudra faire attention a respecter le pattern PRG https://fr.wikipedia.org/wiki/Post-redirect-get, bien vérifier que l'administration soit sécurisée, et que les formulaires soient validées aussi bien en Front (coté html, js) qu'en Back (coté php).
+**Il faudra faire attention a respecter le pattern PRG** https://fr.wikipedia.org/wiki/Post-redirect-get, bien vérifier que l'administration soit sécurisée, et que les formulaires soient validées aussi bien en Front (coté html, js) qu'en Back (coté php).
 
 **Il faudra réaliser un Modèle Conceptuel de Données.**
 
@@ -35,10 +31,12 @@ Il faudra faire attention a respecter le pattern PRG https://fr.wikipedia.org/wi
 
 Bonus:
 
-- Tâche cron qui envoie un email lorsque le produit arrive à terme de sa garantie
-- Une page ou l'on peut voir un graphique comparant les sommes dépensées par catégorie entre deux dates.
+1. Tâche cron qui envoie un email lorsque le produit arrive à terme de sa garantie
+2. Une page ou l'on peut voir un graphique comparant les sommes dépensées par catégorie entre deux dates.
 
-**Temps de dev: 2 semaines.**
+**Temps de dévelopemment : 2 semaines.**
+
+___
 
 # Work organization
 
@@ -76,9 +74,32 @@ Bonus:
 
   https://www.youtube.com/watch?v=r_NiFqLvfsc&list=PLjwdMgw5TTLVDKy8ikf5Df5fnMqY-ec16&index=1
 
-### II. Work distribution:
-#### Time: 3 days
+___
 
-- Sign in and sign up to dashboard / _s'inscrire et accéder au dashboard_ : **Philippe PERECHODOV**
-- List client's products / _lister les produits du client_ : **Yacine SBAI**
-- Products modification (create, edit and delete) / _modification des produits (insérer, modifier et supprimer)_ : **Sergio NUNEZ MENESES**
+### II. Work distribution:
+#### Initial git workflow
+- Creation of 3 different branches:
+  - ```dev/philippe```
+  - ```dev/sergio```
+  - ```dev/yacine```
+
+### Back-end functionalities
+#### Time: 4 days
+
+- Sign in and sign up to dashboard / _s'inscrire et accéder au dashboard_: **Philippe PERECHODOV**
+- List client's products / _lister les produits du client_: **Yacine SBAI**
+- Products modification (create, edit and delete) / _modification des produits (insérer, modifier et supprimer)_: **Sergio NUNEZ MENESES**
+
+### Front-end design
+#### Time: 3 days
+- Main page / _page principale_: **Philippe PERECHODOV**
+- All products page / _page de tous les produits_: **Yacine SBAI**
+- Create product page, and edit-delete product page / _page de création d'un produit, et page de modification/suppression d'un produit_: **Sergio NUNEZ MENESES**
+
+___
+
+### III. Merge:
+#### Git workflow
+
+- Creation of 1 new branch: ```dev/integration```
+- All merging will be done in ```dev/integration```, first from ```dev/philippe```, then from ```dev/yacine```, and finally from ```dev/sergio```

@@ -209,7 +209,7 @@ class ActionsController
         }
       } else
       {
-        header("Location:/?alert=info&info=$error_msg");
+        header("Location:/actions?alert=info&info=$error_msg");
         return;
       }
     }
