@@ -7,7 +7,7 @@ try {
           UsersController::sign_in();
         }
         elseif ($_GET['user'] == 'sign_up') {
-          // sign_up();
+          UsersController::sign_up();
         }
         elseif ($_GET['user'] == 'logged') {
 
@@ -25,12 +25,16 @@ try {
             }
         }
         else {
-            throw new Exception('blablabla');
+            UsersController::sign_in();
         }
     }
     else {
         UsersController::sign_in();
     }
+
+
+
+
 }
 catch (Exception $e) {
     echo 'Erreur : ' . $e->getMessage();

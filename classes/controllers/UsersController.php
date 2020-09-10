@@ -11,7 +11,8 @@ class UsersController
 
   public static function sign_up()
   {
-      require('views/sign_upView.php');
+      $_POST['infoCreate'] = '<div id="infoCreat" class="alert alert-success mx-5" role="alert">Votre compte a bien été créé. Cliquez <a href="javascript:void(0)" onclick="closeNav()">ici</a> pour retourner à la page de connexion.</div>';
+      require('views/sign_inView.php');
   }
 
   public static function check_user_login()
@@ -26,8 +27,13 @@ class UsersController
 
           UsersController::user_logged();
       }
-      else {
-          throw new Exception('Login inconnu ou mot de passe erroné');
+      elseif (isset($check_user['login']) AND htmlspecialchars($_POST['user_password']) !== $check_user['pwd']) {
+          $_POST['infoLogin'] = "<i class='fas fa-exclamation-triangle'></i> Mot de passe erroné pour cet identifiant.";
+          UsersController::sign_in();
+      }
+      elseif (!isset($check_user['login'])) {
+          $_POST['infoLogin'] = "<i class='fas fa-exclamation-triangle'></i> Identifiant inconnu. Veuillez vérifier les informations saisies.";
+          UsersController::sign_in();
       }
   }
 
@@ -55,27 +61,21 @@ class UsersController
   public static function check_mail_recup_id()
   {
       require('../classes/models/RecupIdModel.php');
-
-
       $check_mail = (new RecupIdModel())->test_User_Mail(htmlspecialchars($_POST['mailRecupId']));
-
-      // $check_mail['email'] = 'p.perechodov@codeur.online';
-
-
       if (isset($check_mail['email'])) {
           // Les variables
           $to = htmlspecialchars($_POST['mailRecupId']);
           $subject = 'My Personnal Dashboard - Mes identifiant et mot de passe';
-          // $message = 'Login : ' . $check_mail['login'] . ' // Mot de passe : ' . $check_mail['pwd'];
+          $message = 'Login : ' . $check_mail['login'] . ' // Mot de passe : ' . $check_mail['pwd'];
           $headers = 'From: My Personnal Dashboard';
           // Envoi de l'email
           // mail($to, $subject, $message, $headers); // A CONFIGURER !
-          $_POST['infoMail'] = '<div class="alert alert-success" role="alert">
-  Un e-mail a été envoyé à l\'adresse <br>"' . $_POST['mailRecupId'] . '"<br> avec vos identifiants et mot de passe.<br>Vous le recevrez dans quelques intants.</div>';
+          $_POST['infoMailTest'] = true;
       }
       else {
-          $_POST['infoMail'] = '<div class="alert alert-danger" role="alert">L\'adresse e-mail <br>"' . $_POST['mailRecupId'] . '"<br> est inconnue ou erronée.<br>Voulez-vous <a href="">créer un compte</a> ?</div>';
+          $_POST['infoMailTest'] = false;
       }
+
   }
 
 }
