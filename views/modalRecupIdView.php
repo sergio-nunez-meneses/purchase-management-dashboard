@@ -32,6 +32,7 @@ ob_start(); ?>
 <div id="modalRecupIdGlobal" class="">
     <div id="modalHeader" class="modal-header">
         <h5 class="modal-title">Identifiant ou mot de passe oublié ?</h5>
+        <!-- <a href="javascript:void(0)" class="closebtn" onclick="closeModal()">&times;</a> -->
         <button type="button" class="close" aria-label="Close" data-dismiss="modal" onclick="">
           <span aria-hidden="true">&times;</span>
         </button>

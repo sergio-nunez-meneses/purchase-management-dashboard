@@ -1,3 +1,5 @@
-// function myFunction() {
-//     document.getElementById("modalRecupIdGlobal").style.display = 'none';
+// let modalRecupId = document.getElementById("iframeModalRecupId");
+//
+// function closeModal() {
+//     modalRecupId.ariaHidden ="false";
 // }

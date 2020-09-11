@@ -20,11 +20,13 @@
 }
 
 #logo {
-  width: 5rem;
+  width: 10rem;
+  margin-right: -2.5rem;
 }
 
 #logo img {
   width: 100%;
+  margin-top: -20%;
 }
 
 h1, h2, h3, .instructions {
@@ -34,7 +36,8 @@ h1, h2, h3, .instructions {
 h1 {
   font-style: italic;
   font-size: 4rem;
-  margin-bottom: 20%;
+  margin-top: 5%;
+  margin-bottom: 12%;
   font-family: "Helvetica LT Std", "sans serif";
   text-shadow: 1px 1px 2px black;
 }
@@ -65,12 +68,10 @@ i {
   }
 
 .instructionsAlerte {
-  /* color: #f1c40f; */
   color: #f1c40f;
 }
 
 /* Formulaire */
-
 .field {
   width: 400px;
   height: 70px;
@@ -256,7 +257,7 @@ footer a:hover {
   transition: 0.3s;
   padding-top: 60px;
   text-align:center;
-  background-color: rgba(0, 0, 0, 0); /* 0.6 */
+  background-color: rgba(0, 0, 0, 0.6);
   border-left: solid 1px #f1c40f;
 }
 
@@ -269,11 +270,11 @@ footer a:hover {
   transition: 0.3s;
 }
 
-#infoCreat {
+#infoCreate {
   margin-top: 25px !important;
 }
 
-#infoCreat a {
+#infoCreate a {
   padding: 0;
   margin-top: 25px !important;
   text-decoration: none;
@@ -282,7 +283,7 @@ footer a:hover {
   display: inline;
 }
 
-#infoCreat a:hover {
+#infoCreate a:hover {
   color: #f1c40f;
 }
 
@@ -320,7 +321,6 @@ footer a:hover {
 
 #sidenavCreateAccount .field span {
   background-color: rgba(255, 255, 255, 0.8);
-  /* border: 0px !important; */
   border-left: 0px;
   border-bottom: 0px;
   border-top: 0px;
@@ -331,6 +331,7 @@ footer a:hover {
   color: black !important;
   font-size: 1rem !important;
   font-style: italic;
+  text-shadow: none !important;
 }
 
 #spanCreateLogin {
@@ -342,6 +343,7 @@ footer a:hover {
 #user_CreateLogin {
   border-top-right-radius: 20px !important;
   color: #f1c40f;
+  text-shadow: 1px 1px 2px black !important;
 }
 
 #spanCreatePassword, #spanCreateMail {
@@ -351,6 +353,7 @@ footer a:hover {
 
 #user_CreatePassword, #user_CreateMail {
   color: #f1c40f;
+  text-shadow: 1px 1px 2px black !important;
 }
 
 #spanConfirmPassword {
@@ -362,6 +365,7 @@ footer a:hover {
 #user_ConfirmPassword {
   border-bottom-right-radius: 20px !important;
   color: #f1c40f;
+  text-shadow: 1px 1px 2px black !important;
 }
 
 #btn_valide_create {
