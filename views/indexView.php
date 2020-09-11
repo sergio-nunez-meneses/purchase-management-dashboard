@@ -83,7 +83,15 @@ ob_start();
               <td><div class="collapse" id="collapseExample1"><?php echo $product['reference']?></div></td>
               <td><?php echo $product['category']?></td>
               <td><?php echo $product['price']?>€</td>
-              <td><?php echo $product['purchase_date']?></td>
+              <td>
+
+            <?php $vieux_timestamp = mktime('purchase_date');
+echo 'l' . $vieux_timestamp;
+
+
+ // <?php echo $product['purchase_date']?>
+
+</td>
               <td><div class="collapse" id="collapseExample1"><?php echo $product['warranty_date']?></div></td>
               <td><div class="collapse" id="collapseExample1"><?php echo $product['purchase_place']?></div></td>
               <td><div class="scroll"><div class="collapse" id="collapseExample1"><?php echo $product['product_maintenance']?></div></div></td>
