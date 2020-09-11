@@ -5,7 +5,7 @@ const ACTION_TAB = getId('actionTab'),
   EDIT_FORM = getId('editForm'),
   CREATE_BTN = getName('create-product'),
   EDIT_BTN = getName('edit-product'),
-  DELETE_BTN = getName('delete-product');
+  DELETE_BTN = getName('delete-product'),
   ERROR_DIV = getId('errorContainer');
 
 function getId(id) {
@@ -130,6 +130,6 @@ ACTION_TAB.addEventListener('click', displayForms);
 //   e.preventDefault();
 //   validateForm();
 // });
-ERROR_DIV.addEventListener('click', () => {
-  errorContainer.classList.add('hidden');
-});
+// ERROR_DIV.addEventListener('click', () => {
+//   errorContainer.classList.add('hidden');
+// });

@@ -100,7 +100,16 @@ class ActionsController
         }
 
         date_default_timezone_set('Europe/Paris');
-        $purchase_date = filter_var(substr(date("Y-m-d H:i:sa"), 0, -2), FILTER_SANITIZE_STRING);
+        // $purchase_date = filter_var(date('Y-m-d H:i:s'), FILTER_SANITIZE_STRING);
+
+        if (empty($_POST['purchase-date']))
+        {
+          $error = TRUE;
+          $error_msg .= 'Purchase date cannot be empty <br>';
+        } else
+        {
+          $purchase_date = filter_var(date($_POST['purchase-date'] . ' H:i:s'), FILTER_SANITIZE_STRING);
+        }
 
         if (empty($_POST['warranty-date']))
         {
@@ -112,7 +121,7 @@ class ActionsController
           $error_msg .= 'Warranty date cannot be the same as the purchase date <br>';
         } else
         {
-          $warranty_date = filter_var($_POST['warranty-date'] . ' 00:00:00', FILTER_SANITIZE_STRING);
+          $warranty_date = filter_var(date($_POST['warranty-date'] . ' H:i:s'), FILTER_SANITIZE_STRING);
         }
 
         if (empty($_POST['purchase-place'][0]))

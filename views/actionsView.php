@@ -15,7 +15,7 @@ ob_start();
     <?php
     if (($_SERVER['REQUEST_METHOD'] == 'GET') && (isset($_GET['alert']) === TRUE) && (isset($_GET['info']) === TRUE)) {
       ?>
-      <div class="container border border-white p-3">
+      <div class="container p-3">
         <div class="alert alert-<?php echo $_GET['alert']; ?> text-center" role="alert">
           <p class="lead"><?php echo $_GET['info']; ?></p>
         </div>
@@ -24,13 +24,13 @@ ob_start();
     }
     ?>
     <!-- INSERT PRODUCT -->
-    <div class="container border py-3 bgc-transparent">
+    <div class="container p-3 bgc-transparent">
       <div class="d-flex justify-content-between">
         <a class="logo btn btn-md bg-info text-white" href="/">Home</a>
         <button id="actionTab" class="btn btn-md bg-success text-white" type="button">Edit</button>
       </div>
     </div>
-    <div class="container border mt-3 bgc-transparent">
+    <div class="container mt-3 py-3 px-5 bgc-transparent">
       <div id="createFormContainer">
         <form id="createForm" method="POST" action="/">
           <h4 class="p-3 font-weight-bold text-primary text-uppercase text-center">Insert new product</h4>
