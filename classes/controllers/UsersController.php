@@ -32,10 +32,11 @@ class UsersController
       $create_UserDB = (new Sign_upModel())->Create_User_Account(htmlspecialchars($_POST['user_CreateLogin']), htmlspecialchars($_POST['user_CreatePassword']), htmlspecialchars($_POST['user_CreateMail']));
 
       $_POST['infoCreate'] = '<div id="infoCreate" class="alert alert-success mx-5" role="alert">Votre compte a bien été créé. Cliquez <a href="javascript:void(0)" onclick="closeNav()">ici</a> pour retourner à la page de connexion.</div>';
-      $_POST['user_CreateLogin'] = null;
-      $_POST['user_CreateMail'] = null;
-      $_POST['user_CreatePassword'] = null;
-      $_POST['user_ConfirmPassword'] = null;
+
+      // unset($_POST['user_CreateLogin']);
+      // unset($_POST['user_CreateMail']);
+      // unset($_POST['user_CreatePassword']);
+      // unset($_POST['user_ConfirmPassword']);
       require('views/sign_inView.php');
     }
   }
