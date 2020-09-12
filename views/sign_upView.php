@@ -13,7 +13,7 @@
       <div class="input-group-prepend">
         <span id="spanCreateLogin" class="input-group-text"><i class="fas fa-user"></i></span>
       </div>
-      <input id="user_CreateLogin" name="user_CreateLogin" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" required placeholder="Identifiant" value="<?php if (isset($_POST['user_CreateLogin'])) {echo htmlspecialchars($_POST['user_CreateLogin']);} ?>" pattern="[a-zA-ZÀ-ÿ' -]{1,}" autofocus >
+      <input id="user_CreateLogin" name="user_CreateLogin" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" required placeholder="Identifiant" value="<?php if (isset($_POST['user_CreateLogin'])) {echo htmlspecialchars($_POST['user_CreateLogin']);} ?>" pattern="[a-zA-ZÀ-ÿ' -]{1,}">
     </div>
 
     <div class="field input-group input-group-lg">
@@ -43,7 +43,7 @@
         <polygon fill="black" points="0,2.465 2.466,0 15.465,13.001 2.466,26 0,23.536 10.535,13.001 0,2.465 "/>
       </svg>
     </button>
-    
+
   </form>
 
   <?php

@@ -39,7 +39,7 @@ ob_start(); ?>
                   <div class="input-group-prepend">
                     <span id="spanLogin" class="input-group-text"><i class="fas fa-user"></i></span>
                   </div>
-                  <input id="user_login" name="user_login" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" required="required" autocomplete="off" placeholder="Tapez votre identifiant ici" autofocus>
+                  <input id="user_login" name="user_login" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" required="required" autocomplete="off" placeholder="Tapez votre identifiant ici">
                 </div>
 
                 <div class="field input-group input-group-lg">

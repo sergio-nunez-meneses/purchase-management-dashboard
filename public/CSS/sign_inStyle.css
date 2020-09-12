@@ -300,6 +300,10 @@ footer a:hover {
 }
 
 /* Formulaire de Sidenav */
+#sidenavCreateAccount {
+  height: 100vh;
+}
+
 #sidenavCreateAccount i {
   text-shadow: 1px 1px 2px black !important;
 }
