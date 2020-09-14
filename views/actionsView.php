@@ -1,5 +1,8 @@
 <?php
 $title = 'Client Actions';
+$specialStyleCSS = '<link rel="stylesheet" href="/public/CSS/style.css">';
+$specialJS = '<script src="/public/JS/script.js"></script>';
+
 ob_start();
 ?>
 <div class="wh-100 vh-100">
