@@ -1,8 +1,6 @@
 <?php
 require('include/auto_class_loader.php');
 
-// IndexController::products_list();
-
 // base url in .htaccess: index.php?url=$1
 $url = explode('/', $_GET['url']);
 
