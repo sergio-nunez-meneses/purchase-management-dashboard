@@ -6,24 +6,19 @@ class UsersController
   public static function routeur()
   {
     try {
-      if (isset($_GET['user'])) {
+      if (isset($_POST['user_login']) AND isset($_POST['user_password'])) {
+        if (!empty(htmlspecialchars($_POST['user_login'])) AND !empty(htmlspecialchars($_POST['user_password']))) {
+          $login_By_User = htmlspecialchars($_POST['user_login']);
+          $pwd_By_User = htmlspecialchars($_POST['user_password']);
+          UsersController::check_user_login();
+        }
+      }
+      elseif (isset($_GET['user'])) {
         if ($_GET['user'] == 'sign_in') {
           UsersController::sign_in();
         }
         elseif ($_GET['user'] == 'sign_up') {
           UsersController::sign_up();
-        }
-        elseif ($_GET['user'] == 'logged') {
-          if (!empty(htmlspecialchars($_POST['user_login'])) AND !empty(htmlspecialchars($_POST['user_password']))) {
-            $login_By_User = htmlspecialchars($_POST['user_login']);
-            $pwd_By_User = htmlspecialchars($_POST['user_password']);
-            if (isset($login_By_User) AND isset($pwd_By_User)) {
-              UsersController::check_user_login();
-            }
-          }
-        }
-        else {
-          UsersController::sign_in();
         }
       }
       else {
