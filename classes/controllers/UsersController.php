@@ -69,7 +69,7 @@ class UsersController
     $_SESSION['pwd'] = PWD;
     $_SESSION['email'] = EMAIL;
     $_SESSION['logged'] = true;
-    require('views/testView.php');
+    require('views/indexView.php');
   }
 
   public static function user_logout()
