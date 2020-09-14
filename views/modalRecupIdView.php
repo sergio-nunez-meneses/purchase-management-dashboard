@@ -19,7 +19,7 @@ if (isset($_POST['mailRecupId'])) {
 Un e-mail a été envoyé à l\'adresse <br>"' . $_POST['mailRecupId'] . '"<br> avec vos identifiants et mot de passe.<br>Vous le recevrez dans quelques intants.</div>';
     }
     else {
-        $infoMail = '<div class="alert alert-danger" role="alert">L\'adresse e-mail <br>"' . $_POST['mailRecupId'] . '"<br> est inconnue ou erronée.<br>Voulez-vous <a href="">créer un compte</a> ?</div>';
+        $infoMail = '<div class="alert alert-danger" role="alert">L\'adresse e-mail <br>"' . $_POST['mailRecupId'] . '"<br> est inconnue ou erronée.<br>Voulez-vous <a href="" style="cursor:pointer" onclick="openNav()">créer un compte</a> ?</div>';
     }
 }
 else {
@@ -32,8 +32,7 @@ ob_start(); ?>
 <div id="modalRecupIdGlobal" class="">
     <div id="modalHeader" class="modal-header">
         <h5 class="modal-title">Identifiant ou mot de passe oublié ?</h5>
-        <!-- <a href="javascript:void(0)" class="closebtn" onclick="closeModal()">&times;</a> -->
-        <button type="button" class="close" aria-label="Close" data-dismiss="modal" onclick="">
+        <button type="button" class="close" aria-label="Close" data-dismiss="modal" onclick="closeModal()">
           <span aria-hidden="true">&times;</span>
         </button>
     </div>
