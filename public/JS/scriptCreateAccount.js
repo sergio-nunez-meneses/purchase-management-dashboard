@@ -18,6 +18,7 @@ function openNav() {
   }
   else {
     sideNav.style.width = "50%";
+    sideNav.style.backgroundColor = "rgba(0, 0, 0, 0.6)"
     if (info_Create != null) {
       sideNav.style.transition = "0s";
     }

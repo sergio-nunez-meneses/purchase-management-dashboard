@@ -3,35 +3,35 @@
 class UsersController
 {
 
- public static function routeur()
+  public static function routeur()
   {
     try {
       if (isset($_GET['user'])) {
-          if ($_GET['user'] == 'sign_in') {
-            UsersController::sign_in();
+        if ($_GET['user'] == 'sign_in') {
+          UsersController::sign_in();
+        }
+        elseif ($_GET['user'] == 'sign_up') {
+          UsersController::sign_up();
+        }
+        elseif ($_GET['user'] == 'logged') {
+          if (!empty(htmlspecialchars($_POST['user_login'])) AND !empty(htmlspecialchars($_POST['user_password']))) {
+            $login_By_User = htmlspecialchars($_POST['user_login']);
+            $pwd_By_User = htmlspecialchars($_POST['user_password']);
+            if (isset($login_By_User) AND isset($pwd_By_User)) {
+              UsersController::check_user_login();
+            }
           }
-          elseif ($_GET['user'] == 'sign_up') {
-            UsersController::sign_up();
-          }
-          elseif ($_GET['user'] == 'logged') {
-              if (!empty(htmlspecialchars($_POST['user_login'])) AND !empty(htmlspecialchars($_POST['user_password']))) {
-                  $login_By_User = htmlspecialchars($_POST['user_login']);
-                  $pwd_By_User = htmlspecialchars($_POST['user_password']);
-                  if (isset($login_By_User) AND isset($pwd_By_User)) {
-                    UsersController::check_user_login();
-                  }
-              }
-          }
-          else {
-              UsersController::sign_in();
-          }
+        }
+        else {
+          UsersController::sign_in();
+        }
       }
       else {
-          UsersController::sign_in();
+        UsersController::sign_in();
       }
     }
     catch (Exception $e) {
-        echo 'Erreur : ' . $e->getMessage();
+      echo 'Erreur : ' . $e->getMessage();
     }
   }
 
@@ -39,7 +39,7 @@ class UsersController
   public static function sign_in()
   {
     UsersController::user_logout();
-    require('views/sign_inView.php');
+    Sign_inView::sign_in();
   }
 
   public static function sign_up()
@@ -50,27 +50,27 @@ class UsersController
     if (isset($check_userLogin['login'])) {
       $_POST['infoCreate'] = '<div id="infoCreate" class="alert alert-danger mx-5" role="alert">Cet identifiant existe déjà. Merci d\'en choisir un nouveau.</div>';
       $_POST['user_CreateLogin'] = null;
-      require('views/sign_inView.php');
+      Sign_inView::sign_in();
     }
     else if (isset($check_userMail['email'])) {
       $_POST['infoCreate'] = '<div id="infoCreate" class="alert alert-danger mx-5" role="alert">Cet email est déjà utilisé.<a id="linkRecupId" href="#modalRecupId" data-toggle="modal" class="modal-trigger"> Mot de passe oublié ?</a></div>';
       $_POST['user_CreateMail'] = null;
-      require('views/sign_inView.php');
+      Sign_inView::sign_in();
     }
     elseif (htmlspecialchars($_POST['user_CreatePassword']) !== htmlspecialchars($_POST['user_ConfirmPassword'])) {
       $_POST['infoCreate'] = '<div id="infoCreate" class="alert alert-danger mx-5" role="alert">Les deux mots de passe saisis ne sont pas identique.</div>';
-      require('views/sign_inView.php');
+      Sign_inView::sign_in();
     }
     else {
       $create_UserDB = (new Sign_upModel())->Create_User_Account(htmlspecialchars($_POST['user_CreateLogin']), htmlspecialchars($_POST['user_CreatePassword']), htmlspecialchars($_POST['user_CreateMail']));
 
       $_POST['infoCreate'] = '<div id="infoCreate" class="alert alert-success mx-5" role="alert">Votre compte a bien été créé. Cliquez <a href="javascript:void(0)" onclick="closeNav()">ici</a> pour retourner à la page de connexion.</div>';
 
-      // unset($_POST['user_CreateLogin']);
-      // unset($_POST['user_CreateMail']);
-      // unset($_POST['user_CreatePassword']);
-      // unset($_POST['user_ConfirmPassword']);
-      require('views/sign_inView.php');
+      unset($_POST['user_CreateLogin']);
+      unset($_POST['user_CreateMail']);
+      unset($_POST['user_CreatePassword']);
+      unset($_POST['user_ConfirmPassword']);
+      Sign_inView::sign_in();
     }
   }
 

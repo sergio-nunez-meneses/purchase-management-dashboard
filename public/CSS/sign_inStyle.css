@@ -134,9 +134,13 @@ i {
 #create_form {
   text-align: left !important;
   margin-top: 10%;
+  text-decoration: none;
+  color: white;
+  text-align: right;
+  transition: all 0.3s ease-in-out;
 }
 
-#oubli_form a, #create_form a {
+#oubli_form a {
   text-decoration: none;
   color: white;
   text-align: right;
@@ -147,7 +151,7 @@ i {
   color: #f1c40f;
 }
 
-#oubli_form:hover a, #create_form:hover a {
+#oubli_form:hover a, #create_form:hover {
   color: #f1c40f;
 }
 
@@ -155,9 +159,9 @@ i {
   color: white;
 }
 
-/* Connection ans create button */
+/* Connection and create button */
 
-#btn_valide_connexion, #btn_valide_create {
+#btn_valide_connexion {
   color: black;
   font-weight: bold;
   background-color: #f1c40f;
@@ -167,7 +171,7 @@ i {
   word-spacing: 1rem;
 }
 
-#btn_valide_connexion:hover, #btn_valide_create:hover {
+#btn_valide_connexion:hover {
   background-color: #fad390;
 }
 
@@ -196,6 +200,7 @@ footer a:hover {
 /* Footer Modal */
 #modalHeader {
   background-color: #f1c40f;
+  text-shadow: none;
 }
 
 #modalBody p, #modalBody h5 {
@@ -219,7 +224,7 @@ footer a:hover {
   background-color: rgba(0, 0, 0, 0.8);
 }
 
-#modalFooterSpy a {
+#modalmodalBody a {
   color: white;
 }
 
@@ -227,21 +232,27 @@ footer a:hover {
   color: white;
 }
 
-#modalFooterSpy a:hover {
+#modalmodalBody a:hover {
   text-decoration: none;
   color: #f1c40f;
 }
 
-#github {
-  color: white;
+#maj span {
+  color : #f1c40f !important;
 }
 
-#github:hover {
-  color: #f1c40f;
+#maj:hover span {
+  color : white !important;
 }
+
 
 #github i {
   font-size: 400%;
+  color: white !important;
+}
+
+#github i:hover {
+  color: #f1c40f !important;
 }
 
 
@@ -373,7 +384,17 @@ footer a:hover {
 }
 
 #btn_valide_create {
+  color: black !important;
+  font-weight: bold;
+  background-color: #f1c40f;
+  border-radius: 10px;
+  transition: all 0.3s ease-in-out;
+  text-decoration: none;
+  word-spacing: 1rem;
+}
 
+#btn_valide_create:hover {
+  background-color: #fad390;
 }
 
 /* Media querie de Sidenav */

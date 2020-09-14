@@ -12,6 +12,8 @@ function loader($class_name) {
     $parent_folder = 'controllers';
   } elseif (substr($class_name, -5) === 'Model') {
     $parent_folder = 'models';
+  } elseif (substr($class_name, -4) === 'View') {
+    $parent_folder = 'views';
   }
 
   $path = "classes/$parent_folder/$class_name.php";
