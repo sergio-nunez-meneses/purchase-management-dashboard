@@ -16,5 +16,4 @@ class IndexModel extends Database
     $product = $stmt->fetchAll();
     return $product;
   }
-
 }
