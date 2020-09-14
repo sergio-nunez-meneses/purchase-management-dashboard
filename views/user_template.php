@@ -14,7 +14,7 @@
   </head>
 
   <body>
-    <?php echo $_SESSION['id'] . '</br>' . $_SESSION['email'] . '</br>'; ?>
+
     <header>
       <!-- NAVBAR -->
       <div class="mb-5">
@@ -41,7 +41,7 @@
                 <a class="nav-link" href="/test"><i class="fas fa-list mx-1"></i>Test</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="/"><i class="fas fa-sign-out-alt mx-1"></i>Sign out</a>
+                <a class="nav-link" href="/&logout=yes"><i class="fas fa-sign-out-alt mx-1"></i>Sign out</a>
               </li>
             </ul>
           </div>

@@ -13,6 +13,7 @@ function loader($class_name) {
     $parent_folder = 'views';
   } elseif (substr($class_name, -10) === 'Controller') {
     $parent_folder = 'controllers';
+  }
 
   $path = "classes/$parent_folder/$class_name.php";
 

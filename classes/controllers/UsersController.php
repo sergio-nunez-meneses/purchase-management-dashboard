@@ -33,7 +33,10 @@ class UsersController
 
   public static function sign_in()
   {
-    UsersController::user_logout();
+    if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['logout']))
+    {
+      UsersController::user_logout();
+    }
     Sign_inView::sign_in();
   }
 
