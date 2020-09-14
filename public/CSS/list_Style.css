@@ -1,32 +1,33 @@
+.scroll {
+  overflow: auto;
+  width: auto;
+  height: 100px;
+}
 
-.scroll{
-overflow: auto;
-width: auto;
-height: 100px;
+table {
+  background-color: lightBlue !important;
 }
 
 
-
-
-table{
-background-color: lightBlue !important;
-
-}
-
-
-body{
+body {
   background: no-repeat fixed url("../../public/img/montagne.jpg");
-  back
 }
 
-.back{
+.back {
   background-color: rgba(0,0,0,0.5);
 }
 
-.nav-item{
+/* .nav-item {
   margin-left: 50px
-}
+} */
 
-.titre{
+.titre {
   color: white
 }
+
+/* @media () {
+  #navbarNav {
+    flex-direction: row;
+    justify-content: flex-start;
+  }
+} */
