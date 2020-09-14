@@ -32,11 +32,14 @@ class IndexView
             <table class="table table-active">
               <thead class="thead-dark">
                 <tr>
-                  <th scope="col"><p>
-                    <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample1" aria-expanded="false" aria-controls="collapseExample1">
-                      <i class="far fa-eye"></i>
-                    </button>
-                  </p>Nom</th>
+                  <th scope="col">
+                    <p>
+                      <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample1" aria-expanded="false" aria-controls="collapseExample1">
+                        <i class="far fa-eye"></i>
+                      </button>
+                    </p>
+                    Nom
+                  </th>
                   <th scope="col">
                     <div class="collapse" id="collapseExample1">Réf</div>
                   </th>
@@ -123,10 +126,10 @@ class IndexView
                     </td>
                     <td>
                       <div class="d-flex flex-column">
-                        <button type="button" class="btn btn-primary my-1">
+                        <button type="button" class="edit-btn btn btn-primary my-1">
                           <i class="fa fa-pencil"></i>
                         </button>
-                        <button type="button" class="btn btn-danger my-1">
+                        <button type="button" class="delete-btn btn btn-danger my-1">
                           <i class="fa fa-trash-o"></i>
                         </button>
                       </div>
@@ -146,7 +149,7 @@ class IndexView
     require('views/user_template.php');
   }
 
-  public static function display_all_products()
+  public static function display_all_products($all_products)
   {
     $title = 'Index MVC';
     // Personnalisation du CCS propre à cette "view"
@@ -156,6 +159,7 @@ class IndexView
     ob_start()
     ?>
     <!-- ALL PRODUCTS LIST -->
+    <form id="" method="POST" action="/"></form>
     <h1 class="titre">Liste d'achat</h1>
     <table class="table table-active">
       <thead class="thead-dark">
@@ -179,7 +183,7 @@ class IndexView
       </thead>
       <tbody>
         <?php
-        foreach ($products as $row) {
+        foreach ($all_products as $row) {
           ?>
           <tr>
             <td><?php echo $row['name']?></td>

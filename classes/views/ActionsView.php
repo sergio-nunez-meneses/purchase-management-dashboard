@@ -23,12 +23,12 @@ class ActionsView
     <div class="vw-100 vh-100">
       <div class="bg-image w-100">
         <!-- JS ERROR OVERLAY -->
-        <div id="errorContainer" class="error-container hidden p-3">
+        <!-- <div id="errorContainer" class="error-container hidden p-3">
           <div class="container border border-white mt-5 p-3">
             <h3 class="font-weight-bold text-white text-center">Sorry bro!:</h3>
             <p id="displayErrors" class="lead font-italic text-white text-center"></p>
           </div>
-        </div>
+        </div> -->
         <!-- DISPLAY INFOS/ERRORS -->
         <?php
         if (($_SERVER['REQUEST_METHOD'] == 'GET') && (isset($_GET['alert']) === TRUE) && (isset($_GET['info']) === TRUE)) {
@@ -41,12 +41,12 @@ class ActionsView
           <?php
         }
         ?>
-        <div class="container p-3 bgc-transparent">
+        <!-- <div class="container p-3 bgc-transparent">
           <div class="d-flex justify-content-between">
             <a class="logo btn btn-md bg-info text-white" href="/">Home</a>
             <button id="actionTab" class="btn btn-md bg-success text-white" type="button">Edit</button>
           </div>
-        </div>
+        </div> -->
         <div class="container mt-3 py-3 px-5 bgc-transparent">
 
           <?php

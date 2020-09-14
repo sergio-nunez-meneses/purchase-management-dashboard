@@ -12,6 +12,8 @@ if (isset($url) === TRUE) {
     IndexController::products_list();
   } elseif (($url[0] === 'create') || ($url[0] === 'edit')) {
     ActionsController::get_view($url[0]);
+  } elseif ($url[0] === 'test') {
+    IndexController::get_all_products_view();
   } else {
     UsersController::routeur();
   }

@@ -38,6 +38,9 @@
                 <a class="nav-link" href="/edit"><i class="fas fa-list mx-1"></i>See all</a>
               </li>
               <li class="nav-item">
+                <a class="nav-link" href="/test"><i class="fas fa-list mx-1"></i>Test</a>
+              </li>
+              <li class="nav-item">
                 <a class="nav-link" href="/"><i class="fas fa-sign-out-alt mx-1"></i>Sign out</a>
               </li>
             </ul>
