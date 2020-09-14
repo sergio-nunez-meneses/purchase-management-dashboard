@@ -7,7 +7,7 @@
 
   <p class="instructions">Création d'un nouveau compte</p>
 
-  <form class="" action="index.php?user=sign_up" method="post">
+  <form class="" action="/sign&user=sign_up" method="post">
 
     <div class="field input-group input-group-lg">
       <div class="input-group-prepend">

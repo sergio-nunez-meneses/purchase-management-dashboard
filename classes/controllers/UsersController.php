@@ -3,6 +3,39 @@
 class UsersController
 {
 
+ public static function routeur()
+  {
+    try {
+      if (isset($_GET['user'])) {
+          if ($_GET['user'] == 'sign_in') {
+            UsersController::sign_in();
+          }
+          elseif ($_GET['user'] == 'sign_up') {
+            UsersController::sign_up();
+          }
+          elseif ($_GET['user'] == 'logged') {
+              if (!empty(htmlspecialchars($_POST['user_login'])) AND !empty(htmlspecialchars($_POST['user_password']))) {
+                  $login_By_User = htmlspecialchars($_POST['user_login']);
+                  $pwd_By_User = htmlspecialchars($_POST['user_password']);
+                  if (isset($login_By_User) AND isset($pwd_By_User)) {
+                    UsersController::check_user_login();
+                  }
+              }
+          }
+          else {
+              UsersController::sign_in();
+          }
+      }
+      else {
+          UsersController::sign_in();
+      }
+    }
+    catch (Exception $e) {
+        echo 'Erreur : ' . $e->getMessage();
+    }
+  }
+
+
   public static function sign_in()
   {
     UsersController::user_logout();
@@ -63,18 +96,21 @@ class UsersController
 
   public static function user_logged()
   {
-    session_start();
+    // session_start();
     $_SESSION['id'] = ID;
     $_SESSION['login'] = LOGIN;
     $_SESSION['pwd'] = PWD;
     $_SESSION['email'] = EMAIL;
     $_SESSION['logged'] = true;
-    require('views/indexView.php');
+
+    IndexController::products_list();
+
+    // require('views/indexView.php');
   }
 
   public static function user_logout()
   {
-    session_start ();
+    // session_start();
     $_SESSION = array();
     session_destroy();
     unset($_SESSION);

@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 spl_autoload_register('loader');
 
 function loader($class_name) {

@@ -7,45 +7,44 @@ require('include/auto_class_loader.php');
 $url = explode('/', $_GET['url']);
 
 if ($url[0] === '/' || $url[0] === '') {
-  UsersController::sign_in();
+  UsersController::routeur();
+} elseif ($url[0] === 'sign') {
+  UsersController::routeur();
 } elseif ($url[0] === 'actions') {
   ActionsController::actions_form();
 } else {
-  UsersController::sign_in();
+  UsersController::routeur();
 }
 
-try {
-  if (isset($_GET['user'])) {
-      if ($_GET['user'] == 'sign_in') {
-        UsersController::sign_in();
-      }
-      elseif ($_GET['user'] == 'sign_up') {
-        UsersController::sign_up();
-      }
-      elseif ($_GET['user'] == 'logged') {
-
-          if (!empty(htmlspecialchars($_POST['user_login'])) AND !empty(htmlspecialchars($_POST['user_password']))) {
-
-              $login_By_User = htmlspecialchars($_POST['user_login']);
-              $pwd_By_User = htmlspecialchars($_POST['user_password']);
-
-              if (isset($login_By_User) AND isset($pwd_By_User)) {
-                UsersController::check_user_login();
-              }
-          }
-          else {
-              throw new Exception('Indiquez le nom du compte et le mot de passe pour accéder à votre espace privé ou cliquez sur "créer mon compte" pour créer un nouvel espace privé.');
-          }
-      }
-      else {
-          UsersController::sign_in();
-      }
-  }
-  else {
-      UsersController::sign_in();
-  }
-
-}
-catch (Exception $e) {
-    echo 'Erreur : ' . $e->getMessage();
-}
+// try {
+//   if (isset($_GET['user'])) {
+//       if ($_GET['user'] == 'sign_in') {
+//         UsersController::sign_in();
+//       }
+//       elseif ($_GET['user'] == 'sign_up') {
+//         UsersController::sign_up();
+//       }
+//       elseif ($_GET['user'] == 'logged') {
+//
+//           if (!empty(htmlspecialchars($_POST['user_login'])) AND !empty(htmlspecialchars($_POST['user_password']))) {
+//
+//               $login_By_User = htmlspecialchars($_POST['user_login']);
+//               $pwd_By_User = htmlspecialchars($_POST['user_password']);
+//
+//               if (isset($login_By_User) AND isset($pwd_By_User)) {
+//                 UsersController::check_user_login();
+//               }
+//           }
+//       }
+//       else {
+//           UsersController::sign_in();
+//       }
+//   }
+//   else {
+//       UsersController::sign_in();
+//   }
+//
+// }
+// catch (Exception $e) {
+//     echo 'Erreur : ' . $e->getMessage();
+// }

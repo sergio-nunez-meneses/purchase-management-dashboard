@@ -23,7 +23,7 @@ ob_start();
         <a class="nav-link" href="index.php"><i class="fas fa-list"></i></a>
       </li>
       <li class="nav-item active">
-        <a class="nav-link" href="index.php"><i class="fas fa-sign-out-alt"></i></a>
+        <a class="nav-link" href="/"><i class="fas fa-sign-out-alt"></i></a>
       </li>
     </ul>
   </div>

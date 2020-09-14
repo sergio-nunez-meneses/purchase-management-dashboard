@@ -34,7 +34,7 @@ ob_start(); ?>
         </header>
 
         <main class="">
-            <form class="" action="index.php?user=logged" method="post">
+            <form class="" action="/sign&user=logged" method="post">
                 <div class="field input-group input-group-lg">
                   <div class="input-group-prepend">
                     <span id="spanLogin" class="input-group-text"><i class="fas fa-user"></i></span>
