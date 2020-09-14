@@ -1,0 +1,32 @@
+
+.scroll{
+overflow: auto;
+width: auto;
+height: 100px;
+}
+
+
+
+
+table{
+background-color: lightBlue !important;
+
+}
+
+
+body{
+  background: no-repeat fixed url("../../public/img/montagne.jpg");
+  back
+}
+
+.back{
+  background-color: rgba(0,0,0,0.5);
+}
+
+.nav-item{
+  margin-left: 50px
+}
+
+.titre{
+  color: white
+}
