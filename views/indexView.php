@@ -85,11 +85,14 @@ ob_start();
               <td><?php echo $product['price']?>€</td>
               <td>
 
-            <?php $vieux_timestamp = mktime('purchase_date');
-echo 'l' . $vieux_timestamp;
+            <?php
 
+            // $vieux_timestamp = mktime('purchase_date');
+            // echo 'l' . $vieux_timestamp;
 
- // <?php echo $product['purchase_date']?>
+            echo $product['purchase_date']
+
+            ?>
 
 </td>
               <td><div class="collapse" id="collapseExample1"><?php echo $product['warranty_date']?></div></td>
