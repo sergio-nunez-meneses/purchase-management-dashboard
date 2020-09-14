@@ -96,7 +96,6 @@ class UsersController
 
   public static function user_logged()
   {
-    // session_start();
     $_SESSION['id'] = ID;
     $_SESSION['login'] = LOGIN;
     $_SESSION['pwd'] = PWD;
@@ -104,13 +103,10 @@ class UsersController
     $_SESSION['logged'] = true;
 
     IndexController::products_list();
-
-    // require('views/indexView.php');
   }
 
   public static function user_logout()
   {
-    // session_start();
     $_SESSION = array();
     session_destroy();
     unset($_SESSION);
@@ -129,7 +125,7 @@ class UsersController
       $message = 'Login : ' . $check_mail['login'] . ' // Mot de passe : ' . $check_mail['pwd'];
       $headers = 'From: My Personnal Dashboard';
       // Envoi de l'email
-      // mail($to, $subject, $message, $headers); // A CONFIGURER !
+      mail($to, $subject, $message, $headers);
       $_POST['infoMailTest'] = true;
     }
     else {
