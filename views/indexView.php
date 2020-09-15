@@ -37,8 +37,7 @@ ob_start();
     </div>
 
     <div class="col-8 back ">
-      <canvas id="graph1" width="300" height="300"></canvas>
-      <canvas id="graph2" width="300" height="300"></canvas>
+      <canvas id="graph1" width="300" height="200"></canvas>
 
       <!-- chart.js -->
       <script type="text/javascript">
@@ -60,7 +59,7 @@ ob_start();
           {
           backgroundColor: 'rgba(0,0,0,0.5)',
           borderColor: 'black',
-          data: [10, 50, 30]
+          data: []
           }
         ]
       }

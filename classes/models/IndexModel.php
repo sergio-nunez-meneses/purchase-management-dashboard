@@ -17,7 +17,6 @@ class IndexModel extends Database
     return $product;
   }
 
-
   public function price($id)
   {
     $stmt = $this->run_query('SELECT price FROM products WHERE user_id = :id', ['id' => $id]);
