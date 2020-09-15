@@ -25,7 +25,8 @@ class IndexView
         <div class="offset-lg-2 col-lg-8 bgc-transparent">
           <!-- DISPLAY INFOS/ERRORS -->
           <?php
-          if (($_SERVER['REQUEST_METHOD'] == 'GET') && (isset($_GET['alert']) === TRUE) && (isset($_GET['info']) === TRUE)) {
+          if (($_SERVER['REQUEST_METHOD'] == 'GET') && (isset($_GET['alert']) === TRUE) && (isset($_GET['info']) === TRUE))
+          {
             ?>
             <div class="container p-3">
               <div class="alert alert-<?php echo $_GET['alert']; ?> text-center" role="alert">
@@ -38,32 +39,33 @@ class IndexView
           <!-- DISPLAY INFOS WARRANTY -->
           <div class="my-5">
             <?php
-            foreach ($products_expire_soon as $value)
+            if ($products_expire_soon !== NULL)
             {
-              ?>
-              <div class="alert alert-warning my-1 mx-5 text-center" role="alert">
-                ATTENTION : La garantie du produit <?php echo $value['name'] ?> (<?php echo $value['category'] ?>) acheté le <?php echo $value['purchase_date_fr'] ?> arrive à expiration le <?php echo $value['warranty_date_fr'] ?> !
-              </div>
-              <?php
+              foreach ($products_expire_soon as $value)
+              {
+                ?>
+                <div class="alert alert-warning my-1 mx-5 text-center" role="alert">
+                  ATTENTION : La garantie du produit <?php echo $value['name'] ?> (<?php echo $value['category'] ?>) acheté le <?php echo $value['purchase_date_fr'] ?> arrive à expiration le <?php echo $value['warranty_date_fr'] ?> !
+                </div>
+                <?php
+              }
             }
             ?>
           </div>
           <!-- CLIENT GRAPH -->
-          <h1 class="py-1 text-white">Your last purchases</h1>
-
-          <h1 class="text-white">Derniers achats</h1>
+          <h1 class="py-1 text-white">Your last purchases - Vos derniers achats</h1>
+          <p>
+            <button id="detail" class="btn" type="button" data-toggle="collapse" data-target="#collapseExample1" aria-expanded="false" aria-controls="collapseExample1">
+              <i class="far fa-eye">
+                <span>Afficher les détails</span>
+              </i>
+            </button>
+          </p>
           <div class="table-responsive text-center">
             <table class="table table-hover table-stripped table-sm">
               <thead class="thead-dark">
                 <tr>
-                  <th scope="col">
-                    <p>
-                      <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample1" aria-expanded="false" aria-controls="collapseExample1">
-                        <i class="far fa-eye"></i>
-                      </button>
-                    </p>
-                    Nom
-                  </th>
+                  <th scope="col">Nom</th>
                   <th scope="col">
                     <div class="collapse" id="collapseExample1">Réf</div>
                   </th>
