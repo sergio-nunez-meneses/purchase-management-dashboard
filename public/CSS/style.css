@@ -62,17 +62,24 @@ a {
   transform: scale(1);
   transition: transform 0.4s ease;
 }
+
 button[type='button']:hover,
 button[type='submit']:hover,
 a:hover {
   transform: scale(1.1);
   transition: all 0.3s ease;
 }
+
 input[class='form-control'], select, textarea {
   transform: scale(1);
   transition: transform 0.2s ease;
 }
+
 input[class='form-control']:hover, select:hover, textarea:hover {
   transform: scale(1.0125);
   transition: all 0.3s ease;
+}
+
+#NavBarLinks {
+  color: #f1c40f !important;
 }

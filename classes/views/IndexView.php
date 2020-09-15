@@ -66,7 +66,7 @@ class IndexView
           <p>
             <button id="detail" class="btn" type="button" data-toggle="collapse" data-target="#collapseExample1" aria-expanded="false" aria-controls="collapseExample1">
               <i class="far fa-eye">
-                <span>Afficher les détails</span><span class="collapse" id="collapseExample1">Masquer les détails</span>
+                <span>Afficher<span class="collapse" id="collapseExample1">Masquer</span> les détails</span>
               </i>
             </button>
           </p>
@@ -113,11 +113,11 @@ class IndexView
                     <input form="edit_last_products_<?php echo $product['id']; ?>" type="hidden" name="product-id" value="<?php echo $product['id']; ?>">
                     <!-- product name -->
                     <td>
-                      <a href="/edit&id=<?php echo $product['id']; ?>">
+                      <!-- <a href="/edit&id=<?php echo $product['id']; ?>"> -->
                         <p class="product-name-<?php echo $product['id']; ?> lead">
-                          <?php echo substr($product['name'], 0, 20) . '...'; ?>
+                          <?php echo substr($product['name'], 0, 20); ?>
                         </p>
-                      </a>
+                      <!-- </a> -->
                       <input form="edit_last_products_<?php echo $product['id']; ?>" class="hidden form-control" type="text" name="product-name<?php echo '-' . $product['id']; ?>" value="<?php echo $product['name']; ?>">
                     </td>
                     <!-- product reference -->
@@ -150,7 +150,7 @@ class IndexView
                     <!-- product price -->
                     <td>
                       <p class="product-price-<?php echo $product['id']; ?> lead">
-                        <?php echo round($product['price'], 2); ?>€
+                        <?php echo round($product['price'], 2); ?> €
                       </p>
                       <input form="edit_last_products_<?php echo $product['id']; ?>" class="hidden form-control" type="text" name="product-price<?php echo '-' . $product['id']; ?>" value="<?php echo $product['price']; ?>">
                     </td>

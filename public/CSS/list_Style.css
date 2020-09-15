@@ -65,6 +65,24 @@ th {
   background-color: white;
 }
 
+button[type='button'],
+button[type='submit'],
+a {
+  transform: scale(1);
+  transition: transform 0.4s ease;
+}
+
+button[type='button']:hover,
+button[type='submit']:hover,
+a:hover {
+  transform: scale(1.1);
+  transition: all 0.3s ease;
+}
+
+#NavBarLinks {
+  color: #f1c40f !important;
+}
+
 /* .nav-item {
   margin-left: 50px
 } */

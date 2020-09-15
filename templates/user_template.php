@@ -19,7 +19,7 @@
       <!-- NAVBAR -->
       <div class="">
         <nav class="navbar navbar-dark bg-dark navbar-expand-lg">
-          <a class="navbar-brand mx-3" href="/user_index"><img id="logoNav" src="public/images/logo.png" class="responsive-img"></a>
+          <a class="navbar-brand mx-3" href="/user_index"><img id="logoNav" src="public/images/logo.png" class="responsive-img" title="Retour à l'accueil"></a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -29,7 +29,7 @@
               if ($_GET['url'] !== 'create_product') {
                 ?>
                 <li class="nav-item mx-3">
-                  <a class="nav-link" href="/create_product"><i class="fas fa-plus mx-1"></i>Insert</a>
+                  <a id="NavBarLinks" class="nav-link" href="/create_product"><i class="fas fa-plus mx-1"></i>Insert</a>
                 </li>
                 <?php
               }
@@ -38,13 +38,13 @@
               if ($_GET['url'] !== 'edit_product') {
                 ?>
                 <li class="nav-item mx-3">
-                  <a class="nav-link" href="/edit_product"><i class="fas fa-list mx-1"></i>See all</a>
+                  <a id="NavBarLinks" class="nav-link" href="/edit_product"><i class="fas fa-list mx-1"></i>See all</a>
                 </li>
                 <?php
               }
               ?>
               <li class="nav-item mx-3">
-                <a class="nav-link" href="/&logout=yes"><i class="fas fa-sign-out-alt mx-1"></i>Sign out</a>
+                <a id="NavBarLinks" class="nav-link" href="/&logout=yes"><i class="fas fa-sign-out-alt mx-1"></i>Sign out</a>
               </li>
             </ul>
           </div>
