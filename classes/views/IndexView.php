@@ -105,157 +105,160 @@ class IndexView
                 {
                   ?>
                   <!-- EDIT FORM -->
-                  <form id="edit_last_products_<?php echo $product['id']; ?>" method="POST" action="/user_index"></form>
-                  <!-- user id -->
-                  <input form="edit_last_products_<?php echo $product['id']; ?>" type="hidden" name="user-id" value="<?php echo $_SESSION['id']; ?>">
-                  <tr>
-                    <!-- product id -->
-                    <input form="edit_last_products_<?php echo $product['id']; ?>" type="hidden" name="product-id" value="<?php echo $product['id']; ?>">
-                    <!-- product name -->
-                    <td>
-                      <a href="/edit&id=<?php echo $product['id']; ?>">
-                        <p class="product-name-<?php echo $product['id']; ?> lead">
-                          <?php echo substr($product['name'], 0, 20) . '...'; ?>
-                        </p>
-                      </a>
-                      <input form="edit_last_products_<?php echo $product['id']; ?>" class="hidden form-control" type="text" name="product-name<?php echo '-' . $product['id']; ?>" value="<?php echo $product['name']; ?>">
-                    </td>
-                    <!-- product reference -->
-                    <td>
-                      <div class="collapse" id="collapseExample1">
-                        <p class="product-reference-<?php echo $product['id']; ?> lead">
-                          <?php echo $product['reference']; ?>
-                        </p>
-                        <input form="edit_last_products_<?php echo $product['id']; ?>" class="hidden form-control" type="text" name="product-reference<?php echo '-' . $product['id']; ?>" value="<?php echo $product['reference']; ?>">
-                      </div>
-                    </td>
-                    <!-- product category -->
-                    <td>
-                      <p class="product-category-<?php echo $product['id']; ?> lead">
-                        <?php echo $product['category']; ?>
-                      </p>
-                      <select form="edit_last_products_<?php echo $product['id']; ?>" class="hidden form-control" name="product-category<?php echo '-' . $product['id']; ?>[]" required>
-                        <option value="<?php echo $product['category']; ?>"><?php echo $product['category']; ?></option>
-                        <option value="Electroménager">Electroménager</option>
-                        <option value="TV-HIFI">TV-HIFI</option>
-                        <option value="Bricolage">Bricolage</option>
-                        <option value="Voiture">Voiture</option>
-                        <option value="Alimentation">Alimentation</option>
-                        <option value="Jardinage">Jardinage</option>
-                        <option value="Musique">Musique</option>
-                        <option value="Scolaire">Scolaire</option>
-                        <option value="Animaux">Animaux</option>
-                      </select>
-                    </td>
-                    <!-- product price -->
-                    <td>
-                      <p class="product-price-<?php echo $product['id']; ?> lead">
-                        <?php echo round($product['price'], 2); ?>€
-                      </p>
-                      <input form="edit_last_products_<?php echo $product['id']; ?>" class="hidden form-control" type="text" name="product-price<?php echo '-' . $product['id']; ?>" value="<?php echo $product['price']; ?>">
-                    </td>
-                    <!-- purchase date -->
-                    <td>
-                      <p class="purchase-date-<?php echo $product['id']; ?> lead">
-                        <?php echo date('jS F, Y', strtotime($product['purchase_date'])); ?>
-                      </p>
-                      <input form="edit_last_products_<?php echo $product['id']; ?>" class="hidden form-control" type="date" name="purchase-date<?php echo '-' . $product['id']; ?>" value="">
-                    </td>
-                    <!-- warranty date -->
-                    <td>
-                      <div class="collapse" id="collapseExample1">
-                        <p class="warranty-date-<?php echo $product['id']; ?> lead">
-                          <?php echo date('jS F, Y', strtotime($product['warranty_date'])); ?>
-                        </p>
-                        <input form="edit_last_products_<?php echo $product['id']; ?>" class="hidden form-control" type="date" name="warranty-date<?php echo '-' . $product['id']; ?>" value="<?php echo $product['warranty_date']; ?>">
-                      </div>
-                    </td>
-                    <!-- purchase place -->
-                    <td>
-                      <div class="collapse" id="collapseExample1">
-                        <p class="purchase-place-<?php echo $product['id']; ?> lead">
-                          <?php echo $product['purchase_place']; ?>
-                        </p>
-                        <select form="edit_last_products_<?php echo $product['id']; ?>" class="hidden form-control" name="purchase-place<?php echo '-' . $product['id']; ?>[]" required>
-                          <option value="<?php echo $product['purchase_place']; ?>"><?php echo $product['purchase_place']; ?></option>
-                          <option value="Direct">Direct</option>
-                          <option value="Online">Online</option>
-                        </select>
-                      </div>
-                    </td>
-                    <!-- place address -->
-                    <td>
-                      <div class="collapse" id="collapseExample1">
-                        <p class="place-address-<?php echo $product['id']; ?> lead">
-                          <?php echo $product['place_address']; ?>
-                        </p>
-                        <input form="edit_last_products_<?php echo $product['id']; ?>" class="hidden form-control" type="text" name="place-address<?php echo '-' . $product['id']; ?>" value="<?php echo $product['place_address']; ?>">
-                      </div>
-                    </td>
-                    <!-- product maintenance -->
-                    <td>
-                      <div class="scroll">
-                        <div class="collapse" id="collapseExample1">
-                          <p class="product-maintenance-<?php echo $product['id']; ?> lead">
-                            <?php echo $product['product_maintenance']; ?>
+                  <form id="edit_last_products_<?php echo $product['id']; ?>" method="POST" action="/user_index">
+                    <!-- user id -->
+                    <input type="hidden" name="user-id" value="<?php echo $_SESSION['id']; ?>">
+                      <tr>
+                        <!-- product id -->
+                        <input type="hidden" name="product-id" value="<?php echo $product['id']; ?>">
+                        <!-- product name -->
+                        <td>
+                          <a href="/edit&id=<?php echo $product['id']; ?>">
+                            <p class="product-name-<?php echo $product['id']; ?> lead">
+                              <?php echo substr($product['name'], 0, 20) . '...'; ?>
+                            </p>
+                          </a>
+                          <input class="hidden form-control" type="text" name="product-name<?php echo '-' . $product['id']; ?>" value="<?php echo $product['name']; ?>">
+                        </td>
+                        <!-- product reference -->
+                        <td>
+                          <div class="collapse" id="collapseExample1">
+                            <p class="product-reference-<?php echo $product['id']; ?> lead">
+                              <?php echo $product['reference']; ?>
+                            </p>
+                            <input class="hidden form-control" type="text" name="product-reference<?php echo '-' . $product['id']; ?>" value="<?php echo $product['reference']; ?>">
+                          </div>
+                        </td>
+                        <!-- product category -->
+                        <td>
+                          <p class="product-category-<?php echo $product['id']; ?> lead">
+                            <?php echo $product['category']; ?>
                           </p>
-                          <input form="edit_last_products_<?php echo $product['id']; ?>" class="hidden form-control" type="text" name="product-maintenance<?php echo '-' . $product['id']; ?>" value="<?php echo $product['product_maintenance']; ?>">
-                        </div>
-                      </div>
-                    </td>
-                    <!-- product receipt -->
-                    <td>
-                      <div class="collapse" id="collapseExample1">
-                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-                          <i class="far fa-images"></i>
-                        </button>
-                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                          <div class="modal-dialog">
-                            <div class="modal-content">
-                              <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Image</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                  <span aria-hidden="true">&times;</span>
-                                </button>
-                              </div>
-                              <div class="modal-body">
-                                <img class="purchase-receipt-<?php echo $product['id']; ?> mw-100" src="/public/<?php echo $product['purchase_receipt']; ?>">
-                                <input form="edit_last_products_<?php echo $product['id']; ?>" class="hidden form-control" type="file" multiple name="purchase-receipt<?php echo '-' . $product['id']; ?>[]">
-                                <input form="edit_last_products_<?php echo $product['id']; ?>" type="hidden" name="stored-receipt<?php echo '-' . $product['id']; ?>" value="<?php echo $product['purchase_receipt']; ?>">
-                              </div>
-                              <div class="modal-footer">
-                                <a class="btn btn-primary" href="public/<?php echo $product['purchase_receipt']; ?>" role="button" download="receipt">
-                                  Télécharger
-                                </a>
+                          <select class="hidden form-control" name="product-category<?php echo '-' . $product['id']; ?>[]" required>
+                            <option value="<?php echo $product['category']; ?>"><?php echo $product['category']; ?></option>
+                            <option value="Electroménager">Electroménager</option>
+                            <option value="TV-HIFI">TV-HIFI</option>
+                            <option value="Bricolage">Bricolage</option>
+                            <option value="Voiture">Voiture</option>
+                            <option value="Alimentation">Alimentation</option>
+                            <option value="Jardinage">Jardinage</option>
+                            <option value="Musique">Musique</option>
+                            <option value="Scolaire">Scolaire</option>
+                            <option value="Animaux">Animaux</option>
+                          </select>
+                        </td>
+                        <!-- product price -->
+                        <td>
+                          <p class="product-price-<?php echo $product['id']; ?> lead">
+                            <?php echo round($product['price'], 2); ?>€
+                          </p>
+                          <input class="hidden form-control" type="text" name="product-price<?php echo '-' . $product['id']; ?>" value="<?php echo $product['price']; ?>">
+                        </td>
+                        <!-- purchase date -->
+                        <td>
+                          <p class="purchase-date-<?php echo $product['id']; ?> lead">
+                            <?php echo date('jS F, Y', strtotime($product['purchase_date'])); ?>
+                          </p>
+                          <input class="hidden form-control" type="date" name="purchase-date<?php echo '-' . $product['id']; ?>">
+                          <input type="hidden" name="stored-date<?php echo '-' . $product['id']; ?>" value="<?php echo $product['purchase_date']; ?>">
+                        </td>
+                        <!-- warranty date -->
+                        <td>
+                          <div class="collapse" id="collapseExample1">
+                            <p class="warranty-date-<?php echo $product['id']; ?> lead">
+                              <?php echo date('jS F, Y', strtotime($product['warranty_date'])); ?>
+                            </p>
+                            <input class="hidden form-control" type="date" name="warranty-date<?php echo '-' . $product['id']; ?>">
+                            <input type="hidden" name="stored-warranty<?php echo '-' . $product['id']; ?>" value="<?php echo $product['warranty_date']; ?>">
+                          </div>
+                        </td>
+                        <!-- purchase place -->
+                        <td>
+                          <div class="collapse" id="collapseExample1">
+                            <p class="purchase-place-<?php echo $product['id']; ?> lead">
+                              <?php echo $product['purchase_place']; ?>
+                            </p>
+                            <select class="hidden form-control" name="purchase-place<?php echo '-' . $product['id']; ?>[]" required>
+                              <option value="<?php echo $product['purchase_place']; ?>"><?php echo $product['purchase_place']; ?></option>
+                              <option value="Direct">Direct</option>
+                              <option value="Online">Online</option>
+                            </select>
+                          </div>
+                        </td>
+                        <!-- place address -->
+                        <td>
+                          <div class="collapse" id="collapseExample1">
+                            <p class="place-address-<?php echo $product['id']; ?> lead">
+                              <?php echo $product['place_address']; ?>
+                            </p>
+                            <input class="hidden form-control" type="text" name="place-address<?php echo '-' . $product['id']; ?>" value="<?php echo $product['place_address']; ?>">
+                          </div>
+                        </td>
+                        <!-- product maintenance -->
+                        <td>
+                          <div class="scroll">
+                            <div class="collapse" id="collapseExample1">
+                              <p class="product-maintenance-<?php echo $product['id']; ?> lead">
+                                <?php echo $product['product_maintenance']; ?>
+                              </p>
+                              <input class="hidden form-control" type="text" name="product-maintenance<?php echo '-' . $product['id']; ?>" value="<?php echo $product['product_maintenance']; ?>">
+                            </div>
+                          </div>
+                        </td>
+                        <!-- product receipt -->
+                        <td>
+                          <div class="collapse" id="collapseExample1">
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                              <i class="far fa-images"></i>
+                            </button>
+                            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                              <div class="modal-dialog">
+                                <div class="modal-content">
+                                  <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Image</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                      <span aria-hidden="true">&times;</span>
+                                    </button>
+                                  </div>
+                                  <div class="modal-body">
+                                    <img class="purchase-receipt-<?php echo $product['id']; ?> mw-100" src="/public/<?php echo $product['purchase_receipt']; ?>">
+                                    <input class="hidden form-control" type="file" multiple name="purchase-receipt<?php echo '-' . $product['id']; ?>[]">
+                                    <input type="hidden" name="stored-receipt<?php echo '-' . $product['id']; ?>" value="<?php echo $product['purchase_receipt']; ?>">
+                                  </div>
+                                  <div class="modal-footer">
+                                    <a class="btn btn-primary" href="public/<?php echo $product['purchase_receipt']; ?>" role="button" download="receipt">
+                                      Télécharger
+                                    </a>
+                                  </div>
+                                </div>
                               </div>
                             </div>
                           </div>
-                        </div>
-                      </div>
-                    </td>
-                    <!-- user manual -->
-                    <td>
-                      <div class="scroll">
-                        <p class="user-manual-<?php echo $product['id']; ?> lead">
-                          <?php echo $product['user_manual']; ?>
-                        </p>
-                        <input form="edit_last_products_<?php echo $product['id']; ?>" class="hidden form-control" type="text" name="user-manual<?php echo '-' . $product['id']; ?>" value="<?php echo $product['user_manual']; ?>">
-                      </div>
-                    </td>
-                    <td>
-                      <div class="d-flex flex-column">
-                        <button form="edit_last_products_<?php echo $product['id']; ?>" class="btn btn-primary my-1" type="button" name="edit-btn">
-                          <i class="fa fa-pencil"></i>
-                        </button>
-                        <button form="edit_last_products_<?php echo $product['id']; ?>" class="btn btn-danger my-1" type="submit" name="delete-btn">
-                          <i class="fa fa-trash-o"></i>
-                        </button>
-                        <button form="edit_last_products_<?php echo $product['id']; ?>" class="hidden btn btn-success my-1" type="submit" name="submit-btn">
-                          <i class="fa fa-exclamation"></i>
-                        </button>
-                      </div>
-                    </td>
-                  </tr>
+                        </td>
+                        <!-- user manual -->
+                        <td>
+                          <div class="scroll">
+                            <p class="user-manual-<?php echo $product['id']; ?> lead">
+                              <?php echo $product['user_manual']; ?>
+                            </p>
+                            <input class="hidden form-control" type="text" name="user-manual<?php echo '-' . $product['id']; ?>" value="<?php echo $product['user_manual']; ?>">
+                          </div>
+                        </td>
+                        <td>
+                          <div class="d-flex flex-column">
+                            <button class="btn btn-primary my-1" type="button" name="edit-btn">
+                              <i class="fa fa-pencil"></i>
+                            </button>
+                            <button class="btn btn-danger my-1" type="submit" name="delete-btn">
+                              <i class="fa fa-trash-o"></i>
+                            </button>
+                            <button class="hidden btn btn-success my-1" type="submit" name="submit-btn">
+                              <i class="fa fa-exclamation"></i>
+                            </button>
+                          </div>
+                        </td>
+                      </tr>
+                  </form>
                   <?php
                 }
                 ?>
