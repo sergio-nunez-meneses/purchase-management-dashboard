@@ -21,7 +21,7 @@ class ActionsView
     ob_start();
     ?>
     <div class="vh-100">
-      <div class="bg-image w-100">
+      <div class="">
         <!-- JS ERROR OVERLAY -->
         <!-- <div id="errorContainer" class="error-container hidden p-3">
           <div class="container border border-white mt-5 p-3">
@@ -33,7 +33,7 @@ class ActionsView
         <?php
         if (($_SERVER['REQUEST_METHOD'] == 'GET') && (isset($_GET['alert']) === TRUE) && (isset($_GET['info']) === TRUE)) {
           ?>
-          <div class="container p-3">
+          <div class="container pt-3">
             <div class="alert alert-<?php echo $_GET['alert']; ?> text-center" role="alert">
               <p class="lead"><?php echo $_GET['info']; ?></p>
             </div>
@@ -56,7 +56,8 @@ class ActionsView
             <!-- INSERT PRODUCT -->
             <div id="createFormContainer">
               <form id="createForm" method="POST" action="/create_product">
-                <h1 class="p-3 text-center">Insert new product</h1>
+                <h1 class="m-0 text-center">Insert new product</h1>
+                <h1 class="mb-1 text-center">Ajouter un nouveau produit</h1>
                 <div class="form-group">
                   <input class="form-control" type="text" name="product-name" placeholder="Name" required>
                 </div>
@@ -109,7 +110,7 @@ class ActionsView
                   <input class="form-control" type="hidden" name="user-id" value="<?php echo $_SESSION['id'] ?>" required>
                 </div>
                 <div class="form-group text-center">
-                  <button id="detail" class="btn btn-md px-5 bg-primary" type="submit" name="create-product">Create</button>
+                  <button id="detail" class="btn btn-md px-5" type="submit" name="create-product">Create</button>
                 </div>
               </form>
             </div>

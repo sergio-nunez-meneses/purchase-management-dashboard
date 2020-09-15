@@ -94,7 +94,7 @@ class Sign_inView
   <div class="modal fade" id="modalRecupId" tabindex="-1" role="dialog" aria-labelledby="modalRecupId" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
-        <iframe id="iframeModalRecupId" class="rounded" src="views/modalRecupIdView.php"></iframe>
+        <iframe id="iframeModalRecupId" class="rounded" src="templates/modalRecupIdView.php"></iframe>
       </div>
     </div>
   </div>
