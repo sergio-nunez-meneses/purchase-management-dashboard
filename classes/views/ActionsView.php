@@ -56,7 +56,7 @@ class ActionsView
             <!-- INSERT PRODUCT -->
             <div id="createFormContainer">
               <form id="createForm" method="POST" action="/create_product">
-                <h4 class="p-3 font-weight-bold text-primary text-uppercase text-center">Insert new product</h4>
+                <h1 class="p-3 text-center">Insert new product</h1>
                 <div class="form-group">
                   <input class="form-control" type="text" name="product-name" placeholder="Name" required>
                 </div>
@@ -109,7 +109,7 @@ class ActionsView
                   <input class="form-control" type="hidden" name="user-id" value="<?php echo $_SESSION['id'] ?>" required>
                 </div>
                 <div class="form-group text-center">
-                  <button class="btn btn-md px-5 bg-primary text-white" type="submit" name="create-product">Create</button>
+                  <button id="detail" class="btn btn-md px-5 bg-primary" type="submit" name="create-product">Create</button>
                 </div>
               </form>
             </div>

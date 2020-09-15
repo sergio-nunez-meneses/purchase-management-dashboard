@@ -2,6 +2,27 @@
   display: none;
 }
 
+body {
+  font-family: "Arial", "sans serif";
+}
+
+h1 {
+  color: white !important;
+  font-style: italic !important;
+  font-size: 4rem !important;
+  font-family: "Helvetica LT Std", "sans serif" !important;
+  text-shadow: 1px 1px 2px black !important;
+}
+
+#detail {
+  color: black;
+  font-size: 1.5rem;
+  background-color: #f1c40f;
+  border-radius: 10px;
+  transition: all 0.3s ease-in-out;
+  text-decoration: none;
+}
+
 .bg-image {
   background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0)), url('../img/chile-picture_010439868_135.jpg') !important;
   background-attachment: fixed;
