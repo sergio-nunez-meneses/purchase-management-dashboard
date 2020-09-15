@@ -5,7 +5,7 @@ class ActionsView
 
   public static function display($url)
   {
-    if ($url === 'create')
+    if ($url === 'create_product')
     {
       $title = 'Insert product';
     }
@@ -20,7 +20,7 @@ class ActionsView
 
     ob_start();
     ?>
-    <div class="vw-100 vh-100">
+    <div class="vh-100">
       <div class="bg-image w-100">
         <!-- JS ERROR OVERLAY -->
         <!-- <div id="errorContainer" class="error-container hidden p-3">
@@ -47,10 +47,10 @@ class ActionsView
             <button id="actionTab" class="btn btn-md bg-success text-white" type="button">Edit</button>
           </div>
         </div> -->
-        <div class="container mt-3 py-3 px-5 bgc-transparent">
+        <div class="container py-3 px-5 bgc-transparent">
 
           <?php
-          if ($url === 'create')
+          if ($url === 'create_product')
           {
             ?>
             <!-- INSERT PRODUCT -->
@@ -119,7 +119,7 @@ class ActionsView
           {
             ?>
             <!-- EDIT PRODUCT -->
-            <div id="editFormContainer">
+            <!-- <div id="editFormContainer">
               <form id="editForm" method="POST" action="/edit">
                 <h4 class="p-3 font-weight-bold text-primary text-uppercase text-center">Edit product</h4>
                 <div class="form-group">
@@ -187,7 +187,7 @@ class ActionsView
                   <button class="btn btn-md mx-3 px-5 bg-danger text-white" type="submit" name="delete-product">Delete</button>
                 </div>
               </form>
-            </div>
+            </div> -->
             <?php
           }
           ?>

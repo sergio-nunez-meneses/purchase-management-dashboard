@@ -3,7 +3,7 @@
 class IndexView
 {
 
-  public static function display_last_products($last_products)
+  public static function display_last_products($products)
   {
     $title = 'User Index';
     // Personnalisation du CCS propre à cette "view"
@@ -22,7 +22,7 @@ class IndexView
 
     <div class="container-fluid text-center">
       <div class="row">
-        <div class="offset-lg-2 col-lg-8 back">
+        <div class="offset-lg-2 col-lg-8 bgc-transparent">
           <!-- DISPLAY INFOS/ERRORS -->
           <?php
           if (($_SERVER['REQUEST_METHOD'] == 'GET') && (isset($_GET['alert']) === TRUE) && (isset($_GET['info']) === TRUE)) {
@@ -36,16 +36,9 @@ class IndexView
           }
           ?>
           <!-- CLIENT GRAPH -->
-          <h1 class="py-1 text-white">Some nonsense title</h1>
-          <div id="carouselExampleSlidesOnly" class="carousel slide py-1" data-ride="carousel">
-            <div class="carousel-inner">
-              <div class="carousel-item active">
-                <img src="public\img\graph.jpg" class="d-block w-100" alt="...">
-              </div>
-            </div>
-          </div>
+          <h1 class="py-1 text-white">Your last purchases</h1>
 
-          <h1 class="titre">Derniers achats</h1>
+          <h1 class="text-white">Derniers achats</h1>
           <div class="table-responsive text-center">
             <table class="table table-hover table-stripped table-sm">
               <thead class="thead-dark">
@@ -88,7 +81,7 @@ class IndexView
                 <!-- user id -->
                 <input form="edit_last_products" type="hidden" name="user-id" value="<?php echo $_SESSION['id']; ?>">
                 <?php
-                foreach ($last_products as $key => $product)
+                foreach ($products as $product)
                 {
                   ?>
                   <tr>
@@ -268,7 +261,7 @@ class IndexView
     ?>
     <!-- ALL PRODUCTS LIST -->
     <form id="" method="POST" action="/"></form>
-    <h1 class="titre">Liste d'achat</h1>
+    <h1 class="text-white">Liste d'achat</h1>
     <table class="table table-active">
       <thead class="thead-dark">
         <tr>

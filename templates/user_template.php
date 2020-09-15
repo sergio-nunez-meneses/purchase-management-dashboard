@@ -17,26 +17,32 @@
 
     <header>
       <!-- NAVBAR -->
-      <div class="mb-5">
+      <div class="">
         <nav class="navbar navbar-dark bg-dark navbar-expand-lg">
           <a class="navbar-brand" href="/user_index">SPY</a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
-          <div id="navbarNav" class="collapse navbar-collapse">
+          <div id="navbarNav" class="collapse navbar-collapse justify-content-end">
             <ul class="navbar-nav">
               <?php
-              if ($_GET['url'] !== 'create') {
+              if ($_GET['url'] !== 'create_product') {
                 ?>
                 <li class="nav-item">
-                  <a class="nav-link" href="/create"><i class="fas fa-plus mx-1"></i>Insert</a>
+                  <a class="nav-link" href="/create_product"><i class="fas fa-plus mx-1"></i>Insert</a>
                 </li>
                 <?php
               }
               ?>
-              <li class="nav-item">
-                <a class="nav-link" href="/edit"><i class="fas fa-list mx-1"></i>See all</a>
-              </li>
+              <?php
+              if ($_GET['url'] !== 'edit_product') {
+                ?>
+                <li class="nav-item">
+                  <a class="nav-link" href="/edit_product"><i class="fas fa-list mx-1"></i>See all</a>
+                </li>
+                <?php
+              }
+              ?>
               <li class="nav-item">
                 <a class="nav-link" href="/&logout=yes"><i class="fas fa-sign-out-alt mx-1"></i>Sign out</a>
               </li>

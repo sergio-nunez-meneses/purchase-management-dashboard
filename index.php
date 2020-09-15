@@ -9,9 +9,11 @@ if (isset($url) === TRUE) {
   } elseif ($url[0] === 'sign') {
     UsersController::routeur();
   } elseif ($url[0] === 'user_index') {
-    IndexController::products_list();
-  } elseif (($url[0] === 'create_product') || ($url[0] === 'edit_product')) {
+    IndexController::products_list($url[0]);
+  } elseif ($url[0] === 'create_product') {
     ActionsController::get_view($url[0]);
+  } elseif ($url[0] === 'edit_product') {
+    IndexController::products_list($url[0]);
   } else {
     UsersController::routeur();
   }
