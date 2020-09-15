@@ -24,5 +24,5 @@ class IndexController
     IndexView::display_expire_soon_products($products_expire_soon);
   }
 
-  
+
 }

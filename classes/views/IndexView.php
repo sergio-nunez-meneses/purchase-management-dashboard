@@ -3,6 +3,25 @@
 class IndexView
 {
 
+  public static function display_expire_soon_products($products_expire_soon)
+  {
+    $title = 'Test Poil';
+    // Personnalisation du CCS propre à cette "view"
+    $specialStyleCSS = null;
+    $specialJS = null;
+    ob_start();
+
+    foreach ($products_expire_soon as $value) {
+      ?>
+      <div class="alert alert-warning mx-5" role="alert">ATTENTION : La garantie du produit <?php echo $value['name'] ?> (<?php echo $value['category'] ?>) acheté le <?php echo $value['purchase_date_fr'] ?> arrive à expiration le <?php echo $value['warranty_date_fr'] ?>.</div>';
+
+      <?php
+    }
+    $content = ob_get_clean();
+    require('views/user_template.php');
+  }
+
+
   public static function display_last_products($last_products)
   {
     $title = 'Index MVC';

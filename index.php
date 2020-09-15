@@ -8,6 +8,7 @@ if (isset($url) === TRUE) {
     UsersController::routeur();
   } elseif ($url[0] === 'sign') {
     UsersController::routeur();
+    // IndexController::Warranty_Date_Soon_Expire();
   } elseif ($url[0] === 'user_index') {
     IndexController::products_list();
   } elseif (($url[0] === 'create') || ($url[0] === 'edit')) {
