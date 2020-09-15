@@ -27,7 +27,7 @@ class IndexController
     {
       $products = (new IndexModel)->get_all_products($id);
     }
-    IndexView::display_last_products($products);
+    IndexView::display_products($products);
   }
 
   public static function Warranty_Date_Soon_Expire()
@@ -36,6 +36,4 @@ class IndexController
     $products_expire_soon = (new Warranty_checkModel())->test_Warranty_Date($id);
     IndexView::display_expire_soon_products($products_expire_soon);
   }
-
-
 }

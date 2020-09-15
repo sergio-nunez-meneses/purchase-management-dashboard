@@ -100,7 +100,8 @@ class UsersController
     $_SESSION['email'] = EMAIL;
     $_SESSION['logged'] = true;
 
-    IndexController::products_list();
+    // IndexController::products_list();
+    header('Location: /user_index');
   }
 
   public static function user_logout()
