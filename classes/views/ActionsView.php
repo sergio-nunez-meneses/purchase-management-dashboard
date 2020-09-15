@@ -184,7 +184,6 @@ class ActionsView
                 </div>
                 <div class="form-group text-center">
                   <button class="btn btn-md mx-3 px-5 bg-success text-white" type="submit" name="edit-product">Edit</button>
-                  <!-- <button class="btn btn-md mx-3 px-5 bg-info text-white" type="submit" name="archive-product">Archive</button> -->
                   <button class="btn btn-md mx-3 px-5 bg-danger text-white" type="submit" name="delete-product">Delete</button>
                 </div>
               </form>
@@ -197,7 +196,7 @@ class ActionsView
     </div>
     <?php
     $content = ob_get_clean();
-    require('views/user_template.php');
+    require('templates/user_template.php');
   }
 }
 ?>

@@ -15,10 +15,6 @@ class ActionsController
       {
         $action = 'edit';
       }
-      elseif (isset($_POST['archive-product']))
-      {
-        $action = 'archive';
-      }
       elseif (isset($_POST['delete-product']))
       {
         $action = 'delete';
@@ -112,7 +108,6 @@ class ActionsController
         }
 
         date_default_timezone_set('Europe/Paris');
-        // $purchase_date = filter_var(date('Y-m-d H:i:s'), FILTER_SANITIZE_STRING);
 
         if (empty($_POST['purchase-date']))
         {
