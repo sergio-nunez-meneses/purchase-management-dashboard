@@ -22,18 +22,14 @@ class IndexController
     if ($url === 'user_index')
     {
       $products = (new IndexModel)->get_last_products($id);
+      $products_expire_soon = (new Warranty_checkModel())->test_Warranty_Date($id);
+
     }
     elseif ($url === 'edit_product')
     {
       $products = (new IndexModel)->get_all_products($id);
+      $products_expire_soon = null;
     }
-    IndexView::display_products($products);
-  }
-
-  public static function Warranty_Date_Soon_Expire()
-  {
-    $id = $_SESSION['id'];
-    $products_expire_soon = (new Warranty_checkModel())->test_Warranty_Date($id);
-    IndexView::display_expire_soon_products($products_expire_soon);
+    IndexView::display_products($products, $products_expire_soon);
   }
 }

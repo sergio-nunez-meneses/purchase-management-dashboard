@@ -9,13 +9,43 @@
 }
 
 table {
-  background-color: lightBlue !important;
+  background-color: rgba(255,255,255,0.75) !important;
+  border-radius: 10px;
 }
 
+body {
+  background-image: url("../img/montagne.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  font-family: "Arial", "sans serif";
+}
 
-/* body {
-  background: no-repeat fixed url("../../public/img/montagne.jpg");
-} */
+h1 {
+  color: white;
+  font-style: italic;
+  font-size: 4rem;
+  font-family: "Helvetica LT Std", "sans serif";
+  text-shadow: 1px 1px 2px black;
+}
+
+#detail {
+  color: black;
+  font-size: 1.5rem;
+  background-color: #f1c40f;
+  border-radius: 10px;
+  transition: all 0.3s ease-in-out;
+  text-decoration: none;
+}
+
+#detail i span {
+  font-style: italic;
+  font-family: "Helvetica LT Std", "sans serif";
+  font-weight: bold;
+}
+
+th {
+  color: #f1c40f !important;
+}
 
 .bgc-transparent {
   background-color: rgba(0,0,0,0.75);
