@@ -73,7 +73,7 @@ class ActionsController
           $error = TRUE;
           $error_msg .= 'Name cannot be empty <br>';
         }
-        elseif (strlen($_POST['product-name' . $append_id]) < 10)
+        elseif (strlen($_POST['product-name' . $append_id]) < 1)
         {
           $error = TRUE;
           $error_msg .= 'Name must contain more than 10 characters <br>';
@@ -88,7 +88,7 @@ class ActionsController
           $error = TRUE;
           $error_msg .= 'Reference cannot be empty <br>';
         }
-        elseif (strlen($_POST['product-reference' . $append_id]) < 4)
+        elseif (strlen($_POST['product-reference' . $append_id]) < 1)
         {
           $error = TRUE;
           $error_msg .= 'Reference must contain more than 4 characters <br>';
@@ -160,7 +160,7 @@ class ActionsController
           $error = TRUE;
           $error_msg .= "Seller's address cannot be empty <br>";
         }
-        elseif (strlen($_POST['place-address' . $append_id]) < 10)
+        elseif (strlen($_POST['place-address' . $append_id]) < 1)
         {
           $error = TRUE;
           $error_msg .= "Seller's address must contain more than 10 characters <br>";
@@ -175,7 +175,7 @@ class ActionsController
           $error = TRUE;
           $error_msg .= 'Maintenance advice cannot be empty <br>';
         }
-        elseif (strlen($_POST['product-maintenance' . $append_id]) < 10)
+        elseif (strlen($_POST['product-maintenance' . $append_id]) < 1)
         {
           $error = TRUE;
           $error_msg .= 'Maintenance advice must contain more than 10 characters <br>';
