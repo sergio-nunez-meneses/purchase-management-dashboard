@@ -5,8 +5,10 @@ class ActionsController
 
   public static function get_view($url)
   {
-    if ($_SERVER['REQUEST_METHOD'] == 'POST')
+    if (($_SERVER['REQUEST_METHOD'] == 'POST') && ($_GET['url'] === 'create_product' || $_GET['url'] === 'edit_product'))
     {
+      $url = $_GET['url'];
+
       if (isset($_POST['create-product']))
       {
         $action = 'create';
@@ -19,21 +21,21 @@ class ActionsController
       {
         $action = 'delete';
       }
-      ActionsController::actions($action);
+      ActionsController::actions($action, $url);
     }
     ActionsView::display($url);
   }
 
-  public static function actions($action)
+  public static function actions($action, $url)
   {
     $error = $product_id = FALSE;
-    $user_id = $success_msg = $error_msg = $product_msg = '';
+    $user_id = $purchase_date = $warranty_date = $success_msg = $error_msg = $product_msg = '';
 
     // if (isset($_SESSION['logged']) && ($_SESSION['logged'] === true))
     if (empty($action))
     {
       $error_msg = 'Failed to perform requested action <br>';
-      header("Location:/actions?alert=danger&info=$error_msg");
+      header("Location:/$url?alert=danger&info=$error_msg");
       return;
     }
     else
@@ -43,7 +45,7 @@ class ActionsController
         $error = TRUE;
         $error_msg .= 'User id cannot be empty <br>';
       }
-      elseif ((new ActionsModel())->user_exists($_POST['user-id']) === FALSE)
+      elseif ((new ActionsModel)->user_exists($_POST['user-id']) === FALSE)
       {
         $error = TRUE;
         $error_msg .= 'You need to sign up to perform this action <br>';
@@ -183,10 +185,10 @@ class ActionsController
         {
           if ($error === FALSE)
           {
-            (new ActionsModel())->create_product($name, $reference, $category, $price, $purchase_date, $warranty_date, $place, $address, $maintenance, $receipt, $manual, $user_id);
+            (new ActionsModel)->create_product($name, $reference, $category, $price, $purchase_date, $warranty_date, $place, $address, $maintenance, $receipt, $manual, $user_id);
 
             $success_msg .= 'Product inserted! <br>';
-            header("Location:/actions?alert=info&info=$success_msg");
+            header("Location:/$url?alert=info&info=$success_msg");
             return;
           }
           else
@@ -222,26 +224,26 @@ class ActionsController
               $actions_model->edit_product($id, $name, $reference, $category, $price, $purchase_date, $warranty_date, $place, $address, $maintenance, $receipt, $manual, $user_id);
 
               $success_msg .= 'Product edited! <br>';
-              header("Location:/actions?alert=info&info=$success_msg");
+              header("Location:/$url?alert=info&info=$success_msg");
               return;
             }
             elseif ($action === 'delete')
             {
               $actions_model->delete_product($id);
               $success_msg .= 'Product deleted <br>';
-              header("Location:/actions?alert=success&info=$success_msg");
+              header("Location:/$url?alert=success&info=$success_msg");
               return;
             }
           }
           else {
-            header("Location:/actions?alert=danger&info=$error_msg");
+            header("Location:/$url?alert=danger&info=$error_msg");
             return;
           }
         }
       }
       else
       {
-        header("Location:/actions?alert=info&info=$error_msg");
+        header("Location:/$url?alert=info&info=$error_msg");
         return;
       }
     }

@@ -5,7 +5,7 @@ class IndexView
 
   public static function display_last_products($last_products)
   {
-    $title = 'Index MVC';
+    $title = 'User Index';
     // Personnalisation du CCS propre à cette "view"
     $specialStyleCSS = '<link rel="stylesheet" type="text/css" href="public/CSS/list_Style.css">';
     $specialJS = '<script src="/public/JS/indexScript.js"></script>';
@@ -13,10 +13,28 @@ class IndexView
     ob_start()
     ?>
     <!-- LAST PRODUCTS -->
+    <!-- <div class="vw-100 vh-100">
+      <div class="bg-image w-100">
+        <div class="container mt-3 py-3 px-5 bgc-transparent">
+        </div>
+      </div>
+    </div> -->
+
     <div class="container-fluid text-center">
       <div class="row">
         <div class="offset-lg-2 col-lg-8 back">
-
+          <!-- DISPLAY INFOS/ERRORS -->
+          <?php
+          if (($_SERVER['REQUEST_METHOD'] == 'GET') && (isset($_GET['alert']) === TRUE) && (isset($_GET['info']) === TRUE)) {
+            ?>
+            <div class="container p-3">
+              <div class="alert alert-<?php echo $_GET['alert']; ?> text-center" role="alert">
+                <p class="lead"><?php echo $_GET['info']; ?></p>
+              </div>
+            </div>
+            <?php
+          }
+          ?>
           <!-- CLIENT GRAPH -->
           <h1 class="py-1 text-white">Some nonsense title</h1>
           <div id="carouselExampleSlidesOnly" class="carousel slide py-1" data-ride="carousel">
@@ -83,7 +101,7 @@ class IndexView
                           <?php echo substr($product['name'], 0, 20) . '...'; ?>
                         </p>
                       </a>
-                      <input class="hidden form-control" type="text" name="product-name" value="<?php echo $product['name']; ?>">
+                      <input form="edit_last_products" class="hidden form-control" type="text" name="product-name" value="<?php echo $product['name']; ?>">
                     </td>
                     <!-- product reference -->
                     <td>
@@ -91,7 +109,7 @@ class IndexView
                         <p class="product-reference lead">
                           <?php echo $product['reference']; ?>
                         </p>
-                        <input class="hidden form-control" type="text" name="product-reference" value="<?php echo $product['reference']; ?>">
+                        <input form="edit_last_products" class="hidden form-control" type="text" name="product-reference" value="<?php echo $product['reference']; ?>">
                       </div>
                     </td>
                     <!-- product category -->
@@ -99,21 +117,32 @@ class IndexView
                       <p class="product-category lead">
                         <?php echo $product['category']; ?>
                       </p>
-                      <input class="hidden form-control" type="text" name="product-category" value="<?php echo $product['category']; ?>">
+                      <select form="edit_last_products" class="hidden form-control" name="product-category[]" required>
+                        <option value="<?php echo $product['category']; ?>"><?php echo $product['category']; ?></option>
+                        <option value="Electroménager">Electroménager</option>
+                        <option value="TV-HIFI">TV-HIFI</option>
+                        <option value="Bricolage">Bricolage</option>
+                        <option value="Voiture">Voiture</option>
+                        <option value="Alimentation">Alimentation</option>
+                        <option value="Jardinage">Jardinage</option>
+                        <option value="Musique">Musique</option>
+                        <option value="Scolaire">Scolaire</option>
+                        <option value="Animaux">Animaux</option>
+                      </select>
                     </td>
                     <!-- product price -->
                     <td>
                       <p class="product-price lead">
                         <?php echo round($product['price'], 2); ?>€
                       </p>
-                      <input class="hidden form-control" type="text" name="product-price" value="<?php echo $product['price']; ?>">
+                      <input form="edit_last_products" class="hidden form-control" type="text" name="product-price" value="<?php echo $product['price']; ?>">
                     </td>
                     <!-- purchase date -->
                     <td>
                       <p class="purchase-date lead">
                         <?php echo date('jS F, Y', strtotime($product['purchase_date'])); ?>
                       </p>
-                      <input class="hidden form-control" type="date" name="purchase-date" value="<?php echo $product['purchase_date']; ?>">
+                      <input form="edit_last_products" class="hidden form-control" type="date" name="purchase-date" value="<?php echo $product['purchase_date']; ?>">
                     </td>
                     <!-- warranty date -->
                     <td>
@@ -121,7 +150,7 @@ class IndexView
                         <p class="warranty-date lead">
                           <?php echo date('jS F, Y', strtotime($product['warranty_date'])); ?>
                         </p>
-                        <input class="hidden form-control" type="date" name="warranty-date" value="<?php echo $product['warranty_date']; ?>">
+                        <input form="edit_last_products" class="hidden form-control" type="date" name="warranty-date" value="<?php echo $product['warranty_date']; ?>">
                       </div>
                     </td>
                     <!-- purchase place -->
@@ -130,7 +159,11 @@ class IndexView
                         <p class="purchase-place lead">
                           <?php echo $product['purchase_place']; ?>
                         </p>
-                        <input class="hidden form-control" type="text" name="purchase-place" value="<?php echo $product['purchase_place']; ?>">
+                        <select form="edit_last_products" class="hidden form-control" name="purchase-place[]" required>
+                          <option value="<?php echo $product['purchase_place']; ?>"><?php echo $product['purchase_place']; ?></option>
+                          <option value="Direct">Direct</option>
+                          <option value="Online">Online</option>
+                        </select>
                       </div>
                     </td>
                     <!-- place address -->
@@ -139,7 +172,7 @@ class IndexView
                         <p class="place-address lead">
                           <?php echo $product['place_address']; ?>
                         </p>
-                        <input class="hidden form-control" type="text" name="place-address" value="<?php echo $product['place_address']; ?>">
+                        <input form="edit_last_products" class="hidden form-control" type="text" name="place-address" value="<?php echo $product['place_address']; ?>">
                       </div>
                     </td>
                     <!-- product maintenance -->
@@ -149,7 +182,7 @@ class IndexView
                           <p class="product-maintenance lead">
                             <?php echo $product['product_maintenance']; ?>
                           </p>
-                          <input class="hidden form-control" type="text" name="product-maintenance" value="<?php echo $product['product_maintenance']; ?>">
+                          <input form="edit_last_products" class="hidden form-control" type="text" name="product-maintenance" value="<?php echo $product['product_maintenance']; ?>">
                         </div>
                       </div>
                     </td>
@@ -169,9 +202,9 @@ class IndexView
                                 </button>
                               </div>
                               <div class="modal-body">
-                                <img class="purchase-receipt mw-100" src="/public/<?php echo $product['purchase_receipt']; ?>" alt="">
-                                <input class="hidden form-control" type="file" multiple name="purchase-receipt[]">
-                                <input type="hidden" name="stored-receipt" value="<?php echo $product['purchase_receipt']; ?>">
+                                <img class="purchase-receipt mw-100" src="/public/<?php echo $product['purchase_receipt']; ?>">
+                                <input form="edit_last_products" class="hidden form-control" type="file" multiple name="purchase-receipt[]">
+                                <input form="edit_last_products" type="hidden" name="stored-receipt" value="<?php echo $product['purchase_receipt']; ?>">
                               </div>
                               <div class="modal-footer">
                                 <a class="btn btn-primary" href="public/<?php echo $product['purchase_receipt']; ?>" role="button" download="receipt">
@@ -189,7 +222,7 @@ class IndexView
                         <p class="user-manual lead">
                           <?php echo $product['user_manual']; ?>
                         </p>
-                        <input class="hidden form-control" type="text" name="user-manual" value="<?php echo $product['user_manual']; ?>">
+                        <input form="edit_last_products" class="hidden form-control" type="text" name="user-manual" value="<?php echo $product['user_manual']; ?>">
                       </div>
                     </td>
                     <td>
@@ -212,9 +245,13 @@ class IndexView
               </tbody>
             </table>
           </div>
+
+
         </div>
       </div>
     </div>
+
+
     <?php
     $content = ob_get_clean();
     require('templates/user_template.php');

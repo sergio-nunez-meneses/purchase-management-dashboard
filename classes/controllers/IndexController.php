@@ -6,26 +6,29 @@ class IndexController
   public static function products_list()
   {
     if (($_SERVER['REQUEST_METHOD'] == 'POST') && ($_GET['url'] === 'user_index'))
-    { // detect if the action was triggered from user_index or edit page
-      if (isset($_POST['edit-btn']))
+    {
+      $url = $_GET['url'];
+
+      if (isset($_POST['submit-btn']))
       {
         $action = 'edit';
       }
       elseif (isset($_POST['delete-btn']))
       {
-        // (new ActionsModel())->delete_product($_POST['product-id']);
-        echo 'edit_last_products_form';
+        $action = 'delete';
       }
+      ActionsController::actions($action, $url);
     }
     $id = $_SESSION['id'];
-    $last_products = (new IndexModel())->get_last_products($id);
+    $last_products = (new IndexModel)->get_last_products($id);
+
     IndexView::display_last_products($last_products);
   }
 
   public static function get_all_products_view()
   {
     $id = $_SESSION['id'];
-    $all_products = (new IndexModel())->get_all_products($id);
+    $all_products = (new IndexModel)->get_all_products($id);
     IndexView::display_all_products($all_products);
   }
 }

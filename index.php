@@ -10,7 +10,7 @@ if (isset($url) === TRUE) {
     UsersController::routeur();
   } elseif ($url[0] === 'user_index') {
     IndexController::products_list();
-  } elseif (($url[0] === 'create') || ($url[0] === 'edit')) {
+  } elseif (($url[0] === 'create_product') || ($url[0] === 'edit_product')) {
     ActionsController::get_view($url[0]);
   } else {
     UsersController::routeur();
