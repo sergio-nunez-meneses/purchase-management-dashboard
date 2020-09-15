@@ -23,6 +23,9 @@
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
+          <div id="NavBarWelcome" class="ml-5 pl-5 justify-content-end">
+            <p class="m-0">Bienvenue <?php echo $_SESSION['login'] ?></p>
+          </div>
           <div id="navbarNav" class="collapse navbar-collapse justify-content-end">
             <ul class="navbar-nav">
               <?php

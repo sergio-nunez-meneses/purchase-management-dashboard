@@ -83,3 +83,16 @@ input[class='form-control']:hover, select:hover, textarea:hover {
 #NavBarLinks {
   color: #f1c40f !important;
 }
+
+#NavBarWelcome {
+  color: #f1c40f !important;
+  margin: auto;
+  font-style: italic;
+  font-family: "Helvetica LT Std", "sans serif";
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+nav {
+  border-bottom: solid 1px #f1c40f;
+}

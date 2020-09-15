@@ -51,6 +51,10 @@ h1 {
   font-weight: bold;
 }
 
+nav {
+  border-bottom: solid 1px #f1c40f;
+}
+
 th {
   color: #f1c40f !important;
 }
@@ -60,9 +64,9 @@ th {
 }
 
 #graph1 {
-  margin-top: 30px;
-  margin-bottom: 30px;
-  background-color: white;
+  margin: auto;
+  margin-bottom: 2rem;
+  background-color: rgba(255,255,255,0.75);
 }
 
 button[type='button'],
@@ -83,13 +87,22 @@ a:hover {
   color: #f1c40f !important;
 }
 
+#NavBarWelcome {
+  color: #f1c40f !important;
+  margin: auto;
+  font-style: italic;
+  font-family: "Helvetica LT Std", "sans serif";
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
 /* .nav-item {
-  margin-left: 50px
+margin-left: 50px
 } */
 
 /* @media () {
-  #navbarNav {
-    flex-direction: row;
-    justify-content: flex-start;
-  }
+#navbarNav {
+flex-direction: row;
+justify-content: flex-start;
+}
 } */
