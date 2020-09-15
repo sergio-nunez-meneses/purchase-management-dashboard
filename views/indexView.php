@@ -37,43 +37,7 @@ ob_start();
     </div>
 
     <div class="col-8 back ">
-      <canvas id="graph1" width="300" height="200"></canvas>
-
-      <!-- chart.js -->
-      <script type="text/javascript">
-      var ctx = document.getElementById('graph1').getContext('2d');
-      var data = {
-        labels: ['Janvier', 'Fevrier', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'],
-        datasets: [
-          {
-          backgroundColor: '#f1c40f',
-          borderColor: 'black',
-          data: [
-            <?php
-            foreach ($price as $product) {
-              echo $product['price'] . ',';
-            }
-            ?>
-          ]
-          },
-          {
-          backgroundColor: 'rgba(0,0,0,0.5)',
-          borderColor: 'black',
-          data: []
-          }
-        ]
-      }
-
-      var options;
-
-      var config = {
-        type: 'line',
-        data: data,
-        options: options
-      }
-      var graph1 = new Chart(ctx, config);
-
-      </script>
+      
 
       <!-- chart.js -->
 

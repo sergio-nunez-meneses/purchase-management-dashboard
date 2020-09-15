@@ -60,7 +60,51 @@
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js" type="text/javascript"></script>
     <script src="/public/JS/functionsDOM.js"></script>
-    <?php echo $specialJS; ?>
+    <?php
+    echo $specialJS;
+
+    if ($_GET['url'] === 'user_index') {
+      ?>
+      <!-- chart.js -->
+      <script type="text/javascript">
+      var ctx = document.getElementById('graph1').getContext('2d');
+
+      var data = {
+        labels: ['Janvier', 'Fevrier', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'],
+        datasets: [
+          {
+          backgroundColor: '#ff0000',
+          borderColor: 'black',
+          data: [
+            <?php
+            foreach ($price as $product) {
+              echo $product['price'] . ',';
+            }
+            ?>
+          ]
+          },
+          {
+          backgroundColor: 'rgba(0,0,0,0.5)',
+          borderColor: 'black',
+          data: []
+          }
+        ]
+      }
+
+      var options;
+
+      var config = {
+        type: 'line',
+        data: data,
+        options: options
+      }
+
+      var graph1 = new Chart(ctx, config);
+      </script>
+      <?php
+    }
+    ?>
   </body>
 </html>

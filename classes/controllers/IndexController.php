@@ -23,13 +23,14 @@ class IndexController
     {
       $products = (new IndexModel)->get_last_products($id);
       $products_expire_soon = (new Warranty_checkModel())->test_Warranty_Date($id);
-
+      $price = (new IndexModel())->price($id);
     }
     elseif ($url === 'edit_product')
     {
       $products = (new IndexModel)->get_all_products($id);
       $products_expire_soon = null;
+      $price = null;
     }
-    IndexView::display_products($products, $products_expire_soon);
+    IndexView::display_products($products, $products_expire_soon, $price);
   }
 }

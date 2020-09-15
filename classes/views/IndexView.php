@@ -3,7 +3,7 @@
 class IndexView
 {
 
-  public static function display_products($products, $products_expire_soon)
+  public static function display_products($products, $products_expire_soon, $price)
   {
     $title = 'User Index';
     // Personnalisation du CCS propre à cette "view"
@@ -52,7 +52,16 @@ class IndexView
             }
             ?>
           </div>
-          <!-- CLIENT GRAPH -->
+          <?php
+          if ($_GET['url'] === 'user_index')
+          {
+            ?>
+            <!-- CLIENT GRAPH -->
+            <canvas id="graph1" width="300" height="200"></canvas>
+            <?php
+          }
+          ?>
+
           <h1 class="py-1 text-white">Your last purchases - Vos derniers achats</h1>
           <p>
             <button id="detail" class="btn" type="button" data-toggle="collapse" data-target="#collapseExample1" aria-expanded="false" aria-controls="collapseExample1">
