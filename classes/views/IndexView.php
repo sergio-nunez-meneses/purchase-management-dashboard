@@ -57,7 +57,7 @@ class IndexView
           <p>
             <button id="detail" class="btn" type="button" data-toggle="collapse" data-target="#collapseExample1" aria-expanded="false" aria-controls="collapseExample1">
               <i class="far fa-eye">
-                <span>Afficher les détails</span>
+                <span>Afficher les détails</span><span class="collapse" id="collapseExample1">Masquer les détails</span>
               </i>
             </button>
           </p>
