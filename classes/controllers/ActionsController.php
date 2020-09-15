@@ -29,7 +29,16 @@ class ActionsController
   public static function actions($action, $url)
   {
     $error = $product_id = FALSE;
-    $user_id = $purchase_date = $warranty_date = $success_msg = $error_msg = $product_msg = '';
+    $user_id = $purchase_date = $warranty_date = $append_id = $success_msg = $error_msg = $product_msg = '';
+
+    if (empty($_POST['product-id']) === TRUE)
+    {
+      $append_id = '';
+    }
+    else
+    {
+      $append_id = '-' . $_POST['product-id'];
+    }
 
     // if (isset($_SESSION['logged']) && ($_SESSION['logged'] === true))
     if (empty($action))
@@ -59,127 +68,127 @@ class ActionsController
       {
         echo 'valid user <br>';
 
-        if (empty($_POST['product-name']))
+        if (empty($_POST['product-name' . $append_id]))
         {
           $error = TRUE;
           $error_msg .= 'Name cannot be empty <br>';
         }
-        elseif (strlen($_POST['product-name']) < 10)
+        elseif (strlen($_POST['product-name' . $append_id]) < 10)
         {
           $error = TRUE;
           $error_msg .= 'Name must contain more than 10 characters <br>';
         }
         else
         {
-          $name = filter_var($_POST['product-name'], FILTER_SANITIZE_STRING);
+          $name = filter_var($_POST['product-name' . $append_id], FILTER_SANITIZE_STRING);
         }
 
-        if (empty($_POST['product-reference']))
+        if (empty($_POST['product-reference' . $append_id]))
         {
           $error = TRUE;
           $error_msg .= 'Reference cannot be empty <br>';
         }
-        elseif (strlen($_POST['product-reference']) < 4)
+        elseif (strlen($_POST['product-reference' . $append_id]) < 4)
         {
           $error = TRUE;
           $error_msg .= 'Reference must contain more than 4 characters <br>';
         }
         else
         {
-          $reference = filter_var($_POST['product-reference'], FILTER_SANITIZE_STRING);
+          $reference = filter_var($_POST['product-reference' . $append_id], FILTER_SANITIZE_STRING);
         }
 
-        if (empty($_POST['product-category'][0]))
+        if (empty($_POST['product-category' . $append_id][0]))
         {
           $error = TRUE;
           $error_msg .= 'Category cannot be empty <br>';
         }
         else
         {
-          $category = filter_var($_POST['product-category'][0], FILTER_SANITIZE_STRING);
+          $category = filter_var($_POST['product-category' . $append_id][0], FILTER_SANITIZE_STRING);
         }
 
-        if (empty($_POST['product-price']))
+        if (empty($_POST['product-price' . $append_id]))
         {
           $error = TRUE;
           $error_msg .= 'Price cannot be empty <br>';
         }
         else
         {
-          $price = filter_var($_POST['product-price'], FILTER_SANITIZE_STRING);
+          $price = filter_var($_POST['product-price' . $append_id], FILTER_SANITIZE_STRING);
         }
 
         date_default_timezone_set('Europe/Paris');
 
-        if (empty($_POST['purchase-date']))
+        if (empty($_POST['purchase-date' . $append_id]))
         {
           $error = TRUE;
           $error_msg .= 'Purchase date cannot be empty <br>';
         }
         else
         {
-          $purchase_date = filter_var(date($_POST['purchase-date'] . ' H:i:s'), FILTER_SANITIZE_STRING);
+          $purchase_date = filter_var(date($_POST['purchase-date' . $append_id] . ' H:i:s'), FILTER_SANITIZE_STRING);
         }
 
-        if (empty($_POST['warranty-date']))
+        if (empty($_POST['warranty-date' . $append_id]))
         {
           $error = TRUE;
           $error_msg .= 'Warranty date cannot be empty <br>';
         }
-        elseif (($_POST['warranty-date'] . ' 00:00:00') <= $purchase_date)
+        elseif (date($_POST['warranty-date' . $append_id] . ' H:i:s') <= $purchase_date)
         {
           $error = TRUE;
           $error_msg .= 'Warranty date cannot be the same as the purchase date <br>';
         }
         else
         {
-          $warranty_date = filter_var(date($_POST['warranty-date'] . ' H:i:s'), FILTER_SANITIZE_STRING);
+          $warranty_date = filter_var(date($_POST['warranty-date' . $append_id] . ' H:i:s'), FILTER_SANITIZE_STRING);
         }
 
-        if (empty($_POST['purchase-place'][0]))
+        if (empty($_POST['purchase-place' . $append_id][0]))
         {
           $error = TRUE;
           $error_msg .= 'Sale type cannot be empty <br>';
         }
         else
         {
-          $place = filter_var($_POST['purchase-place'][0], FILTER_SANITIZE_STRING);
+          $place = filter_var($_POST['purchase-place' . $append_id][0], FILTER_SANITIZE_STRING);
         }
 
-        if (empty($_POST['place-address']))
+        if (empty($_POST['place-address' . $append_id]))
         {
           $error = TRUE;
           $error_msg .= "Seller's address cannot be empty <br>";
         }
-        elseif (strlen($_POST['place-address']) < 10)
+        elseif (strlen($_POST['place-address' . $append_id]) < 10)
         {
           $error = TRUE;
           $error_msg .= "Seller's address must contain more than 10 characters <br>";
         }
         else
         {
-          $address = filter_var($_POST['place-address'], FILTER_SANITIZE_STRING);
+          $address = filter_var($_POST['place-address' . $append_id], FILTER_SANITIZE_STRING);
         }
 
-        if (empty($_POST['product-maintenance']))
+        if (empty($_POST['product-maintenance' . $append_id]))
         {
           $error = TRUE;
           $error_msg .= 'Maintenance advice cannot be empty <br>';
         }
-        elseif (strlen($_POST['product-maintenance']) < 10)
+        elseif (strlen($_POST['product-maintenance' . $append_id]) < 10)
         {
           $error = TRUE;
           $error_msg .= 'Maintenance advice must contain more than 10 characters <br>';
         }
         else
         {
-          $maintenance = filter_var($_POST['product-maintenance'], FILTER_SANITIZE_STRING);
+          $maintenance = filter_var($_POST['product-maintenance' . $append_id], FILTER_SANITIZE_STRING);
         }
 
         // check $_FILES bug
         $receipt = 'someOtherFile.png';
 
-        $manual = filter_var($_POST['user-manual'], FILTER_SANITIZE_STRING);
+        $manual = filter_var($_POST['user-manual' . $append_id], FILTER_SANITIZE_STRING);
 
         if ($action === 'create')
         {

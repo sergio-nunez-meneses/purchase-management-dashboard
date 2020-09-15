@@ -3,46 +3,47 @@ let editBtns = getName('edit-btn'),
 
 function setSelector(column) {
   selector = '[class*="product-' + column + '"]';
-  return getAll(selector);
+  return getAll(selector)[0];
 }
 
 for (let i = 0; i < editBtns.length; i++) {
   editBtns[i].addEventListener('click', () => {
-    let editName = getName('product-name')[i],
-      editReference = getName('product-reference')[i],
-      editCategory = getName('product-category[]')[i],
-      editPrice = getName('product-price')[i],
-      editDate = getName('purchase-date')[i],
-      editWarranty = getName('warranty-date')[i],
-      editPlace = getName('purchase-place[]')[i],
-      editAddress = getName('place-address')[i],
-      editMaintenance = getName('product-maintenance')[i],
-      editReceipt = getName('purchase-receipt[]')[i],
-      editManual = getName('user-manual')[i],
-      storedNames = setSelector('name'),
-      storedReferences = setSelector('reference'),
-      storedCategories = setSelector('category'),
-      storedPrices = setSelector('price'),
-      storedDates = getAll('[class*="purchase-date"]'),
-      storedWarranties = getAll('[class*="warranty-date"]'),
-      storedPlaces = getAll('[class*="purchase-place"]'),
-      storedAddresses = getAll('[class*="place-address"]'),
-      storedMaintenances = setSelector('maintenance'),
-      storedReceipts = getAll('[class*="purchase-receipt"]'),
-      storedManuals = getAll('[class*="user-manual"]');
+    let id = getName('product-id')[i].value,
+      editName = getName('product-name-' + id)[0],
+      editReference = getName('product-reference-' + id)[0],
+      editCategory = getName('product-category-' + id + '[]')[0],
+      editPrice = getName('product-price-' + id)[0],
+      editDate = getName('purchase-date-' + id)[0],
+      editWarranty = getName('warranty-date-' + id)[0],
+      editPlace = getName('purchase-place-' + id + '[]')[0],
+      editAddress = getName('place-address-' + id)[0],
+      editMaintenance = getName('product-maintenance-' + id)[0],
+      editReceipt = getName('purchase-receipt-' + id + '[]')[0],
+      editManual = getName('user-manual-' + id)[0],
+      storedNames = setSelector('name-' + id),
+      storedReferences = setSelector('reference-' + id),
+      storedCategories = setSelector('category-' + id),
+      storedPrices = setSelector('price-' + id),
+      storedDates = getAll('[class*="purchase-date-' + id + '"]')[0],
+      storedWarranties = getAll('[class*="warranty-date-' + id + '"]')[0],
+      storedPlaces = getAll('[class*="purchase-place-' + id + '"]')[0],
+      storedAddresses = getAll('[class*="place-address-' + id + '"]')[0],
+      storedMaintenances = setSelector('maintenance-' + id),
+      storedReceipts = getAll('[class*="purchase-receipt-' + id + '"]')[0],
+      storedManuals = getAll('[class*="user-manual-' + id + '"]')[0];
 
     if (editName.classList.contains('hidden')) {
-      storedNames[i].classList.add('hidden');
-      storedReferences[i].classList.add('hidden');
-      storedCategories[i].classList.add('hidden');
-      storedPrices[i].classList.add('hidden');
-      storedDates[i].classList.add('hidden');
-      storedWarranties[i].classList.add('hidden');
-      storedPlaces[i].classList.add('hidden');
-      storedAddresses[i].classList.add('hidden');
-      storedMaintenances[i].classList.add('hidden');
-      storedReceipts[i].classList.add('hidden');
-      storedManuals[i].classList.add('hidden');
+      storedNames.classList.add('hidden');
+      storedReferences.classList.add('hidden');
+      storedCategories.classList.add('hidden');
+      storedPrices.classList.add('hidden');
+      storedDates.classList.add('hidden');
+      storedWarranties.classList.add('hidden');
+      storedPlaces.classList.add('hidden');
+      storedAddresses.classList.add('hidden');
+      storedMaintenances.classList.add('hidden');
+      storedReceipts.classList.add('hidden');
+      storedManuals.classList.add('hidden');
       editName.classList.remove('hidden');
       editReference.classList.remove('hidden');
       editCategory.classList.remove('hidden');
@@ -68,17 +69,17 @@ for (let i = 0; i < editBtns.length; i++) {
       editMaintenance.classList.add('hidden');
       editReceipt.classList.add('hidden');
       editManual.classList.add('hidden');
-      storedNames[i].classList.remove('hidden');
-      storedReferences[i].classList.remove('hidden');
-      storedCategories[i].classList.remove('hidden');
-      storedPrices[i].classList.remove('hidden');
-      storedDates[i].classList.remove('hidden');
-      storedWarranties[i].classList.remove('hidden');
-      storedPlaces[i].classList.remove('hidden');
-      storedAddresses[i].classList.remove('hidden');
-      storedMaintenances[i].classList.remove('hidden');
-      storedReceipts[i].classList.remove('hidden');
-      storedManuals[i].classList.remove('hidden');
+      storedNames.classList.remove('hidden');
+      storedReferences.classList.remove('hidden');
+      storedCategories.classList.remove('hidden');
+      storedPrices.classList.remove('hidden');
+      storedDates.classList.remove('hidden');
+      storedWarranties.classList.remove('hidden');
+      storedPlaces.classList.remove('hidden');
+      storedAddresses.classList.remove('hidden');
+      storedMaintenances.classList.remove('hidden');
+      storedReceipts.classList.remove('hidden');
+      storedManuals.classList.remove('hidden');
       submitBtns[i].classList.add('hidden');
       editBtns[i].innerHTML = '<i class="fa fa-pencil"></i>';
     }
