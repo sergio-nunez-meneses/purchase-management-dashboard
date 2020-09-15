@@ -37,20 +37,49 @@ ob_start();
     </div>
 
     <div class="col-8 back ">
+      <canvas id="graph1" width="300" height="300"></canvas>
+      <canvas id="graph2" width="300" height="300"></canvas>
 
-      <div id="carouselExampleSlidesOnly" class="carousel slide container-fluid" data-ride="carousel">
-        <div class="carousel-inner">
-          <div class="carousel-item active">
-            <img src="public\img\graph.jpg" class="d-block w-100" alt="...">
-          </div>
-        </div>
-      </div>
+      <!-- chart.js -->
+      <script type="text/javascript">
+      var ctx = document.getElementById('graph1').getContext('2d');
+      var data = {
+        labels: ['Janvier', 'Fevrier', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'],
+        datasets: [
+          {
+          backgroundColor: '#f1c40f',
+          borderColor: 'black',
+          data: [
+            <?php
+            foreach ($price as $product) {
+              echo $product['price'] . ',';
+            }
+            ?>
+          ]
+          },
+          {
+          backgroundColor: 'rgba(0,0,0,0.5)',
+          borderColor: 'black',
+          data: [10, 50, 30]
+          }
+        ]
+      }
 
+      var options;
 
+      var config = {
+        type: 'line',
+        data: data,
+        options: options
+      }
+      var graph1 = new Chart(ctx, config);
 
+      </script>
+
+      <!-- chart.js -->
 
       <h1 class="titre">Dernier achat</h1>
-      <div class="">
+      <div class="form">
 
 
         <table class="table table-active">
@@ -78,143 +107,137 @@ ob_start();
             foreach ($last_products as $product) {
               ?>
               <tr>
+                <tr>
+                  <td><?php echo $product['name']?></td>
+                  <td><div class="collapse" id="collapseExample1"><?php echo $product['reference']?></div></td>
+                  <td><?php echo $product['category']?></td>
+                  <td><?php echo $product['price']?>€</td>
+                  <td><?php echo $product['purchase_date']?></td>
+                  <td><div class="collapse" id="collapseExample1"><?php echo $product['warranty_date']?></div></td>
+                  <td><div class="collapse" id="collapseExample1"><?php echo $product['purchase_place']?></div></td>
+                  <td><div class="scroll"><div class="collapse" id="collapseExample1"><?php echo $product['product_maintenance']?></div></div></td>
+                  <td><div class="collapse" id="collapseExample1">
+
+                    <!-- <?php //echo $product['purchase_receipt']?> -->
+
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                      <i class="far fa-images"></i>
+                    </button>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                      <div class="modal-dialog">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Image</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
+                          <div class="modal-body">
+                            <img class="mw-100" src="public/<?php echo $product['purchase_receipt']; ?>" alt="">
+                          </div>
+                          <div class="modal-footer">
+                            <a class="btn btn-primary"  href="public/<?php echo $product['purchase_receipt']; ?>" role="button" download="receipt">Télécharger</i></a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </td>
+                <td><div class="scroll"><?php echo $product['user_manual']?></div></td>
+                <td><div class="d-flex flex-column">
+                  <button type="button" class="btn btn-primary my-1"><i class="fa fa-pencil"></i></i></button>
+                  <button type="button" class="btn btn-danger my-1"><i class="fa fa-trash-o"></i></button>
+                </div></td>
+              </tr>
+              <?php
+            }
+            ?>
+          </tbody>
+        </table>
+      </div>
+
+      <h1 class="titre">Liste d'achat</h1>
+      <div class="form">
+        <table class="table table-active">
+          <thead class="thead-dark">
             <tr>
-              <td><?php echo $product['name']?></td>
-              <td><div class="collapse" id="collapseExample1"><?php echo $product['reference']?></div></td>
-              <td><?php echo $product['category']?></td>
-              <td><?php echo $product['price']?>€</td>
-              <td>
+              <tr>
+                <th scope="col"><p>
+                  <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                    <i class="far fa-eye"></i>
+                  </button>
+                </p>Nom</th>
+                <th scope="col"><div class="collapse" id="collapseExample">Réf</div></th>
+                <th scope="col">Catégorie</th>
+                <th scope="col">Prix</th>
+                <th scope="col">Date d'achat</th>
+                <th scope="col"><div class="collapse" id="collapseExample">Fin de garantie</div></th>
+                <th scope="col"><div class="collapse" id="collapseExample">Lieu d'achat</div></th>
+                <th scope="col"><div class="collapse" id="collapseExample">Maintenance du produit</div></th>
+                <th scope="col"><div class="collapse" id="collapseExample">Reçu</div></th>
+                <th scope="col">Manuel de l'Utilisateur</th>
+                <th scope="col">Action</th>
+              </tr>
+            </tr>
+          </thead>
+          <tbody>
+            <?php
+            foreach ($products as $row) {
+              ?>
+              <tr>
+                <td><?php echo $row['name']?></td>
+                <td><div class="collapse" id="collapseExample"><?php echo $row['reference']?></div></td>
+                <td><?php echo $row['category']?></td>
+                <td><?php echo $row['price']?>€</td>
+                <td><?php echo $row['purchase_date']?></td>
+                <td><div class="collapse" id="collapseExample"><?php echo $row['warranty_date']?></div></td>
+                <td><div class="collapse" id="collapseExample"><?php echo $row['purchase_place']?></div></td>
+                <td><div class="scroll"><div class="collapse" id="collapseExample"><?php echo $row['product_maintenance']?></div></div></td>
+                <td><div class="collapse" id="collapseExample">
 
-            <?php $vieux_timestamp = mktime('purchase_date');
-echo 'l' . $vieux_timestamp;
+                  <!-- <?php //echo $row['purchase_receipt']?> -->
 
+                  <!-- Button trigger modal -->
+                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                    <i class="far fa-images"></i>
+                  </button>
 
- // <?php echo $product['purchase_date']?>
-
-</td>
-              <td><div class="collapse" id="collapseExample1"><?php echo $product['warranty_date']?></div></td>
-              <td><div class="collapse" id="collapseExample1"><?php echo $product['purchase_place']?></div></td>
-              <td><div class="scroll"><div class="collapse" id="collapseExample1"><?php echo $product['product_maintenance']?></div></div></td>
-              <td><div class="collapse" id="collapseExample1">
-
-                <!-- <?php //echo $product['purchase_receipt']?> -->
-
-                <!-- Button trigger modal -->
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-                  <i class="far fa-images"></i>
-                </button>
-
-                <!-- Modal -->
-                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                  <div class="modal-dialog">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Image</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                          <span aria-hidden="true">&times;</span>
-                        </button>
-                      </div>
-                      <div class="modal-body">
-                        <img class="mw-100" src="public/<?php echo $product['purchase_receipt']; ?>" alt="">
-                      </div>
-                      <div class="modal-footer">
-                        <a class="btn btn-primary"  href="public/<?php echo $product['purchase_receipt']; ?>" role="button" download="receipt">Télécharger</i></a>
+                  <!-- Modal -->
+                  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="exampleModalLabel">Image</h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body">
+                          <img class="mw-100" src="public/<?php echo $row['purchase_receipt']; ?>" alt="">
+                        </div>
+                        <div class="modal-footer">
+                          <a class="btn btn-primary"  href="public/<?php echo $row['purchase_receipt']; ?>" role="button" download="receipt">Télécharger</a>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
-              </div>
-            </td>
-            <td><div class="scroll"><?php echo $product['user_manual']?></div></td>
-            <td><div class="d-flex flex-column">
-              <button type="button" class="btn btn-primary my-1"><i class="fa fa-pencil"></i></i></button>
-              <button type="button" class="btn btn-danger my-1"><i class="fa fa-trash-o"></i></button>
-            </div></td>
-          </tr>
-          <?php
-        }
-        ?>
+              </td>
+              <td><div class="scroll"><?php echo $row['user_manual']?></div></td>
+              <td><div class="d-flex flex-column">
+                <button type="button" class="btn btn-primary"><i class="fa fa-pencil"></i></i></button>
+                <button type="button" class="btn btn-danger"><i class="fa fa-trash-o"></i></button>
+              </div></td>
+            </tr>
+            <?php
+          }
+          ?>
         </tbody>
       </table>
     </div>
-
-    <h1 class="titre">Liste d'achat</h1>
-    <table class="table table-active">
-      <thead class="thead-dark">
-        <tr>
-          <tr>
-            <th scope="col"><p>
-              <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-                <i class="far fa-eye"></i>
-              </button>
-            </p>Nom</th>
-            <th scope="col"><div class="collapse" id="collapseExample">Réf</div></th>
-            <th scope="col">Catégorie</th>
-            <th scope="col">Prix</th>
-            <th scope="col">Date d'achat</th>
-            <th scope="col"><div class="collapse" id="collapseExample">Fin de garantie</div></th>
-            <th scope="col"><div class="collapse" id="collapseExample">Lieu d'achat</div></th>
-            <th scope="col"><div class="collapse" id="collapseExample">Maintenance du produit</div></th>
-            <th scope="col"><div class="collapse" id="collapseExample">Reçu</div></th>
-            <th scope="col">Manuel de l'Utilisateur</th>
-            <th scope="col">Action</th>
-          </tr>
-        </tr>
-      </thead>
-      <tbody>
-        <?php
-        foreach ($products as $row) {
-          ?>
-          <tr>
-            <td><?php echo $row['name']?></td>
-            <td><div class="collapse" id="collapseExample"><?php echo $row['reference']?></div></td>
-            <td><?php echo $row['category']?></td>
-            <td><?php echo $row['price']?>€</td>
-            <td><?php echo $row['purchase_date']?></td>
-            <td><div class="collapse" id="collapseExample"><?php echo $row['warranty_date']?></div></td>
-            <td><div class="collapse" id="collapseExample"><?php echo $row['purchase_place']?></div></td>
-            <td><div class="scroll"><div class="collapse" id="collapseExample"><?php echo $row['product_maintenance']?></div></div></td>
-            <td><div class="collapse" id="collapseExample">
-
-              <!-- <?php //echo $row['purchase_receipt']?> -->
-
-              <!-- Button trigger modal -->
-              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-                <i class="far fa-images"></i>
-              </button>
-
-              <!-- Modal -->
-              <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <h5 class="modal-title" id="exampleModalLabel">Image</h5>
-                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                      </button>
-                    </div>
-                    <div class="modal-body">
-                      <img class="mw-100" src="public/<?php echo $row['purchase_receipt']; ?>" alt="">
-                    </div>
-                    <div class="modal-footer">
-                      <a class="btn btn-primary"  href="public/<?php echo $row['purchase_receipt']; ?>" role="button" download="receipt">Télécharger</a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </td>
-          <td><div class="scroll"><?php echo $row['user_manual']?></div></td>
-          <td><div class="d-flex flex-column">
-            <button type="button" class="btn btn-primary"><i class="fa fa-pencil"></i></i></button>
-            <button type="button" class="btn btn-danger"><i class="fa fa-trash-o"></i></button>
-          </div></td>
-          </tr>
-          <?php
-        }
-        ?>
-      </tbody>
-    </table>
   </div>
 
 </div>

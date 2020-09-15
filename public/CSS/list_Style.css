@@ -10,7 +10,6 @@ height: 100px;
 
 table{
 background-color: lightBlue !important;
-
 }
 
 
@@ -29,4 +28,14 @@ body{
 
 .titre{
   color: white
+}
+
+.form{
+overflow: auto;
+}
+
+#graph1{
+  margin-top: 30px;
+  margin-bottom: 30px;
+  background-color: white;
 }
