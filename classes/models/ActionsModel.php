@@ -78,11 +78,6 @@ class ActionsModel extends Database
     ]);
   }
 
-  public function archive_product($product_id)
-  {
-    // code...
-  }
-
   public function delete_product($product_id)
   {
     $this->run_query('DELETE FROM products WHERE id = :product_id', ['product_id' => $product_id]);

@@ -10,11 +10,11 @@ if (isset($url) === TRUE) {
     UsersController::routeur();
     // IndexController::Warranty_Date_Soon_Expire();
   } elseif ($url[0] === 'user_index') {
-    IndexController::products_list();
-  } elseif (($url[0] === 'create') || ($url[0] === 'edit')) {
+    IndexController::products_list($url[0]);
+  } elseif ($url[0] === 'create_product') {
     ActionsController::get_view($url[0]);
-  } elseif ($url[0] === 'test') {
-    IndexController::get_all_products_view();
+  } elseif ($url[0] === 'edit_product') {
+    IndexController::products_list($url[0]);
   } else {
     UsersController::routeur();
   }

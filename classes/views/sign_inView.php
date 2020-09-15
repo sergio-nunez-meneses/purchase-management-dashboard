@@ -102,7 +102,7 @@ class Sign_inView
   <?php
   $content = ob_get_clean();
 
-  require('views/template.php');
+  require('templates/template.php');
 
   }
 }

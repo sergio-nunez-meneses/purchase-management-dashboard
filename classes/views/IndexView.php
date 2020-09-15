@@ -3,52 +3,44 @@
 class IndexView
 {
 
-  public static function display_expire_soon_products($products_expire_soon)
+  public static function display_last_products($products)
   {
-    $title = 'Test Poil';
-    // Personnalisation du CCS propre à cette "view"
-    $specialStyleCSS = null;
-    $specialJS = null;
-    ob_start();
-
-    foreach ($products_expire_soon as $value) {
-      ?>
-      <div class="alert alert-warning mx-5" role="alert">ATTENTION : La garantie du produit <?php echo $value['name'] ?> (<?php echo $value['category'] ?>) acheté le <?php echo $value['purchase_date_fr'] ?> arrive à expiration le <?php echo $value['warranty_date_fr'] ?>.</div>';
-
-      <?php
-    }
-    $content = ob_get_clean();
-    require('views/user_template.php');
-  }
-
-
-  public static function display_last_products($last_products)
-  {
-    $title = 'Index MVC';
+    $title = 'User Index';
     // Personnalisation du CCS propre à cette "view"
     $specialStyleCSS = '<link rel="stylesheet" type="text/css" href="public/CSS/list_Style.css">';
-    $specialJS = null;
+    $specialJS = '<script src="/public/JS/indexScript.js"></script>';
 
     ob_start()
     ?>
     <!-- LAST PRODUCTS -->
+    <!-- <div class="vw-100 vh-100">
+      <div class="bg-image w-100">
+        <div class="container mt-3 py-3 px-5 bgc-transparent">
+        </div>
+      </div>
+    </div> -->
+
     <div class="container-fluid text-center">
       <div class="row">
-        <div class="offset-lg-2 col-lg-8 back">
-
-          <!-- PURCHASE GRAPH -->
-          <h1 class="py-1 text-white">Some nonsense title</h1>
-          <div id="carouselExampleSlidesOnly" class="carousel slide py-1" data-ride="carousel">
-            <div class="carousel-inner">
-              <div class="carousel-item active">
-                <img src="public\img\graph.jpg" class="d-block w-100" alt="...">
+        <div class="offset-lg-2 col-lg-8 bgc-transparent">
+          <!-- DISPLAY INFOS/ERRORS -->
+          <?php
+          if (($_SERVER['REQUEST_METHOD'] == 'GET') && (isset($_GET['alert']) === TRUE) && (isset($_GET['info']) === TRUE)) {
+            ?>
+            <div class="container p-3">
+              <div class="alert alert-<?php echo $_GET['alert']; ?> text-center" role="alert">
+                <p class="lead"><?php echo $_GET['info']; ?></p>
               </div>
             </div>
-          </div>
+            <?php
+          }
+          ?>
+          <!-- CLIENT GRAPH -->
+          <h1 class="py-1 text-white">Your last purchases</h1>
 
-          <h1 class="titre">Derniers achats</h1>
-          <div class="">
-            <table class="table table-active">
+          <h1 class="text-white">Derniers achats</h1>
+          <div class="table-responsive text-center">
+            <table class="table table-hover table-stripped table-sm">
               <thead class="thead-dark">
                 <tr>
                   <th scope="col">
@@ -72,6 +64,9 @@ class IndexView
                     <div class="collapse" id="collapseExample1">Lieu d'achat</div>
                   </th>
                   <th scope="col">
+                    <div class="collapse" id="collapseExample1">Adress</div>
+                  </th>
+                  <th scope="col">
                     <div class="collapse" id="collapseExample1">Maintenance du produit</div></th>
                   <th scope="col">
                     <div class="collapse" id="collapseExample1">Reçu</div>
@@ -81,43 +76,115 @@ class IndexView
                 </tr>
               </thead>
               <tbody>
+                <!-- EDIT FORM -->
+                <form id="edit_last_products" method="POST" action="/user_index"></form>
+                <!-- user id -->
+                <input form="edit_last_products" type="hidden" name="user-id" value="<?php echo $_SESSION['id']; ?>">
                 <?php
-                foreach ($last_products as $product) {
+                foreach ($products as $product)
+                {
                   ?>
                   <tr>
-                    <td><?php echo $product['name']; ?></td>
+                    <!-- product id -->
+                    <input form="edit_last_products" type="hidden" name="product-id" value="<?php echo $product['id']; ?>">
+                    <!-- product name -->
+                    <td>
+                      <a href="/edit&id=<?php echo $product['id']; ?>">
+                        <p class="product-name lead">
+                          <?php echo substr($product['name'], 0, 20) . '...'; ?>
+                        </p>
+                      </a>
+                      <input form="edit_last_products" class="hidden form-control" type="text" name="product-name" value="<?php echo $product['name']; ?>">
+                    </td>
+                    <!-- product reference -->
                     <td>
                       <div class="collapse" id="collapseExample1">
-                        <?php echo $product['reference']; ?>
+                        <p class="product-reference lead">
+                          <?php echo $product['reference']; ?>
+                        </p>
+                        <input form="edit_last_products" class="hidden form-control" type="text" name="product-reference" value="<?php echo $product['reference']; ?>">
                       </div>
                     </td>
-                    <td><?php echo $product['category']; ?></td>
-                    <td><?php echo $product['price']; ?>€</td>
-                    <td><?php echo $product['purchase_date']; ?></td>
+                    <!-- product category -->
+                    <td>
+                      <p class="product-category lead">
+                        <?php echo $product['category']; ?>
+                      </p>
+                      <select form="edit_last_products" class="hidden form-control" name="product-category[]" required>
+                        <option value="<?php echo $product['category']; ?>"><?php echo $product['category']; ?></option>
+                        <option value="Electroménager">Electroménager</option>
+                        <option value="TV-HIFI">TV-HIFI</option>
+                        <option value="Bricolage">Bricolage</option>
+                        <option value="Voiture">Voiture</option>
+                        <option value="Alimentation">Alimentation</option>
+                        <option value="Jardinage">Jardinage</option>
+                        <option value="Musique">Musique</option>
+                        <option value="Scolaire">Scolaire</option>
+                        <option value="Animaux">Animaux</option>
+                      </select>
+                    </td>
+                    <!-- product price -->
+                    <td>
+                      <p class="product-price lead">
+                        <?php echo round($product['price'], 2); ?>€
+                      </p>
+                      <input form="edit_last_products" class="hidden form-control" type="text" name="product-price" value="<?php echo $product['price']; ?>">
+                    </td>
+                    <!-- purchase date -->
+                    <td>
+                      <p class="purchase-date lead">
+                        <?php echo date('jS F, Y', strtotime($product['purchase_date'])); ?>
+                      </p>
+                      <input form="edit_last_products" class="hidden form-control" type="date" name="purchase-date" value="<?php echo $product['purchase_date']; ?>">
+                    </td>
+                    <!-- warranty date -->
                     <td>
                       <div class="collapse" id="collapseExample1">
-                        <?php echo $product['warranty_date']; ?>
+                        <p class="warranty-date lead">
+                          <?php echo date('jS F, Y', strtotime($product['warranty_date'])); ?>
+                        </p>
+                        <input form="edit_last_products" class="hidden form-control" type="date" name="warranty-date" value="<?php echo $product['warranty_date']; ?>">
                       </div>
                     </td>
+                    <!-- purchase place -->
                     <td>
                       <div class="collapse" id="collapseExample1">
-                        <?php echo $product['purchase_place']; ?>
+                        <p class="purchase-place lead">
+                          <?php echo $product['purchase_place']; ?>
+                        </p>
+                        <select form="edit_last_products" class="hidden form-control" name="purchase-place[]" required>
+                          <option value="<?php echo $product['purchase_place']; ?>"><?php echo $product['purchase_place']; ?></option>
+                          <option value="Direct">Direct</option>
+                          <option value="Online">Online</option>
+                        </select>
                       </div>
                     </td>
+                    <!-- place address -->
+                    <td>
+                      <div class="collapse" id="collapseExample1">
+                        <p class="place-address lead">
+                          <?php echo $product['place_address']; ?>
+                        </p>
+                        <input form="edit_last_products" class="hidden form-control" type="text" name="place-address" value="<?php echo $product['place_address']; ?>">
+                      </div>
+                    </td>
+                    <!-- product maintenance -->
                     <td>
                       <div class="scroll">
                         <div class="collapse" id="collapseExample1">
-                          <?php echo $product['product_maintenance']?>
+                          <p class="product-maintenance lead">
+                            <?php echo $product['product_maintenance']; ?>
+                          </p>
+                          <input form="edit_last_products" class="hidden form-control" type="text" name="product-maintenance" value="<?php echo $product['product_maintenance']; ?>">
                         </div>
                       </div>
                     </td>
+                    <!-- product receipt -->
                     <td>
                       <div class="collapse" id="collapseExample1">
-                        <!-- Button trigger modal -->
                         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
                           <i class="far fa-images"></i>
                         </button>
-                        <!-- Modal -->
                         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                           <div class="modal-dialog">
                             <div class="modal-content">
@@ -128,28 +195,39 @@ class IndexView
                                 </button>
                               </div>
                               <div class="modal-body">
-                                <img class="mw-100" src="public/<?php echo $product['purchase_receipt']; ?>" alt="">
+                                <img class="purchase-receipt mw-100" src="/public/<?php echo $product['purchase_receipt']; ?>">
+                                <input form="edit_last_products" class="hidden form-control" type="file" multiple name="purchase-receipt[]">
+                                <input form="edit_last_products" type="hidden" name="stored-receipt" value="<?php echo $product['purchase_receipt']; ?>">
                               </div>
                               <div class="modal-footer">
-                                <a class="btn btn-primary" href="public/<?php echo $product['purchase_receipt']; ?>" role="button" download="receipt">Télécharger</a>
+                                <a class="btn btn-primary" href="public/<?php echo $product['purchase_receipt']; ?>" role="button" download="receipt">
+                                  Télécharger
+                                </a>
                               </div>
                             </div>
                           </div>
                         </div>
                       </div>
                     </td>
+                    <!-- user manual -->
                     <td>
                       <div class="scroll">
-                        <?php echo $product['user_manual']; ?>
+                        <p class="user-manual lead">
+                          <?php echo $product['user_manual']; ?>
+                        </p>
+                        <input form="edit_last_products" class="hidden form-control" type="text" name="user-manual" value="<?php echo $product['user_manual']; ?>">
                       </div>
                     </td>
                     <td>
                       <div class="d-flex flex-column">
-                        <button type="button" class="edit-btn btn btn-primary my-1">
+                        <button form="edit_last_products" class="btn btn-primary my-1" type="button" name="edit-btn">
                           <i class="fa fa-pencil"></i>
                         </button>
-                        <button type="button" class="delete-btn btn btn-danger my-1">
+                        <button form="edit_last_products" class="btn btn-danger my-1" type="submit" name="delete-btn">
                           <i class="fa fa-trash-o"></i>
+                        </button>
+                        <button form="edit_last_products" class="hidden btn btn-success my-1" type="submit" name="submit-btn">
+                          <i class="fa fa-exclamation"></i>
                         </button>
                       </div>
                     </td>
@@ -160,12 +238,16 @@ class IndexView
               </tbody>
             </table>
           </div>
+
+
         </div>
       </div>
     </div>
+
+
     <?php
     $content = ob_get_clean();
-    require('views/user_template.php');
+    require('templates/user_template.php');
   }
 
   public static function display_all_products($all_products)
@@ -179,7 +261,7 @@ class IndexView
     ?>
     <!-- ALL PRODUCTS LIST -->
     <form id="" method="POST" action="/"></form>
-    <h1 class="titre">Liste d'achat</h1>
+    <h1 class="text-white">Liste d'achat</h1>
     <table class="table table-active">
       <thead class="thead-dark">
         <tr>
@@ -202,7 +284,8 @@ class IndexView
       </thead>
       <tbody>
         <?php
-        foreach ($all_products as $row) {
+        foreach ($all_products as $row)
+        {
           ?>
           <tr>
             <td><?php echo $row['name']?></td>
@@ -281,7 +364,7 @@ class IndexView
     </table>
     <?php
     $content = ob_get_clean();
-    require('views/user_template.php');
+    require('templates/user_template.php');
   }
 }
 ?>

@@ -8,14 +8,6 @@ const ACTION_TAB = getId('actionTab'),
   DELETE_BTN = getName('delete-product'),
   ERROR_DIV = getId('errorContainer');
 
-function getId(id) {
-  return document.getElementById(id);
-}
-
-function getName(name) {
-  return document.getElementsByName(name)[0];
-}
-
 function displayForms() {
   if (EDIT_DIV.classList.contains('hidden')) {
     EDIT_DIV.classList.remove('hidden');
