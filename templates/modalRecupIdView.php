@@ -32,9 +32,10 @@ ob_start(); ?>
 <div id="modalRecupIdGlobal" class="">
     <div id="modalHeader" class="modal-header">
         <h5 class="modal-title">Identifiant ou mot de passe oublié ?</h5>
-        <button type="button" class="close" aria-label="Close" data-dismiss="modal" onclick="closeModal()">
+        <a class="" href="#iframeModalRecupId" onclick="closeModal('iframeModalRecupId')"><img id="logoNav" src="../public/images/logoN.png" class="responsive-img" title="Retour à l'accueil"></a>
+        <!-- <button type="button" class="close" aria-label="Close" data-dismiss="modal" onclick="closeModal()">
           <span aria-hidden="true">&times;</span>
-        </button>
+        </button> -->
     </div>
     <div id="modalBody" class="modal-body">
         <?php

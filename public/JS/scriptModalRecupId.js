@@ -1,5 +1,4 @@
-let modalRecupId = document.getElementById("iframeModalRecupId");
-
-function closeModal() {
-    modalRecupId.style.disply = 'none';
+function closeModal(id) {
+  var modalRecupId = document.getElementById(id);
+    modalRecupId.style.display = 'none';
 }

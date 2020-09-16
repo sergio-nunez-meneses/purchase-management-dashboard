@@ -12,7 +12,7 @@ class Sign_inView
     $specialStyleCSS = '<link rel="stylesheet" type="text/css" href="public/CSS/sign_inStyle.css">';
 
     // Personnalisation du javascript propre à cette "view"
-    $specialJS = '<script type="text/javascript"src="public/JS/scriptCreateAccount.js"></script>'; // ou mettre null si pas de script spécial
+    $specialJS = '<script type="text/javascript"src="public/JS/scriptModalRecupId.js"></script>'; // ou mettre null si pas de script spécial
 
     // Contenu de cette "view"
     ob_start(); ?>

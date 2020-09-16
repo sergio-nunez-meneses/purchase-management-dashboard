@@ -23,3 +23,9 @@
   color: black;
   background-color: #f1c40f;
 }
+
+#logoNav {
+  width: 70px !important;
+  margin-top: -2rem;
+  margin-bottom: -2rem;
+}
