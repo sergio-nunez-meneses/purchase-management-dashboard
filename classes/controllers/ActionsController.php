@@ -122,27 +122,34 @@ class ActionsController
 
         if (empty($_POST['purchase-date' . $append_id]))
         {
-          $error = TRUE;
-          $error_msg .= 'Purchase date cannot be empty <br>';
+          // $error = TRUE;
+          // $error_msg .= 'Purchase date cannot be empty <br>';
+          $purchase_date = filter_var($_POST['stored-date' . $append_id], FILTER_SANITIZE_STRING);
         }
         else
         {
           $purchase_date = filter_var(date($_POST['purchase-date' . $append_id] . ' H:i:s'), FILTER_SANITIZE_STRING);
         }
 
-        if (empty($_POST['warranty-date' . $append_id]))
+        if (empty($_POST['warranty-date' . $append_id]) === FALSE)
         {
-          $error = TRUE;
-          $error_msg .= 'Warranty date cannot be empty <br>';
-        }
-        elseif (date($_POST['warranty-date' . $append_id] . ' H:i:s') <= $purchase_date)
-        {
-          $error = TRUE;
-          $error_msg .= 'Warranty date cannot be the same as the purchase date <br>';
+          // $error = TRUE;
+          // $error_msg .= 'Warranty date cannot be empty <br>';
+          $warranty_date = $_POST['warranty-date' . $append_id];
+
+          if (date($warranty_date . ' H:i:s') <= $purchase_date)
+          {
+            $error = TRUE;
+            $error_msg .= 'Warranty date cannot be the same as the purchase date <br>';
+          }
+          else
+          {
+            $warranty_date = filter_var(date($warranty_date . ' H:i:s'), FILTER_SANITIZE_STRING);
+          }
         }
         else
         {
-          $warranty_date = filter_var(date($_POST['warranty-date' . $append_id] . ' H:i:s'), FILTER_SANITIZE_STRING);
+          $warranty_date = $_POST['stored-warranty' . $append_id];
         }
 
         if (empty($_POST['purchase-place' . $append_id][0]))

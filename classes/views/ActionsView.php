@@ -116,7 +116,7 @@ class ActionsView
             </div>
             <?php
           }
-          else
+          else if ($url === 'single_product')
           {
             ?>
             <!-- EDIT PRODUCT -->

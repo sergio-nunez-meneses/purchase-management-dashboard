@@ -23,7 +23,9 @@ class Sign_inView
           <h3>Welcome to</h3>
           <div id="titre" class="row">
             <div id="logo">
-              <img src="public/images/logo.png" class="responsive-img">
+              <a href="/">
+                <img src="public/images/logo.png" class="responsive-img">
+              </a>
             </div>
             <h1 class="font-weight-bold">My Personnal Dashboard</h1>
           </div>
