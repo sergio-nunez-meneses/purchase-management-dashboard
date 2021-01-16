@@ -75,14 +75,14 @@ class UsersController
   public static function check_user_login()
   {
     $check_user = (new Sign_inModel())->test_User_Login(htmlspecialchars($_POST['user_login']));
-    if (isset($check_user['login']) AND htmlspecialchars($_POST['user_password']) === $check_user['pwd']) {
+    if (isset($check_user['login']) AND password_verify(htmlspecialchars($_POST['user_password']), $check_user['pwd'])) {
       define('ID', $check_user['id']);
       define('LOGIN', $check_user['login']);
       define('PWD', $check_user['pwd']);
       define('EMAIL', $check_user['email']);
       UsersController::user_logged();
     }
-    elseif (isset($check_user['login']) AND htmlspecialchars($_POST['user_password']) !== $check_user['pwd']) {
+    elseif (isset($check_user['login']) AND !password_verify(htmlspecialchars($_POST['user_password']), $check_user['pwd'])) {
       $_POST['infoLogin'] = "<i class='fas fa-exclamation-triangle'></i> Mot de passe erroné pour cet identifiant.";
       UsersController::sign_in();
     }
