@@ -19,6 +19,6 @@ class Sign_upModel extends Database
 
   public function Create_User_Account($createLogin, $createPwd, $createMail)
   {
-    $Create_User_Account = $this->run_query('INSERT INTO users(login, pwd, email) VALUES(:login, :pwd, :email)', ['login' => $createLogin, 'pwd' => password_hash($createPwd, PASSWORD_DEFAULT), 'email' => $createMail]);
+    $Create_User_Account = $this->run_query('INSERT INTO users(login, pwd, email) VALUES(:login, :pwd, :email)', ['login' => $createLogin, 'pwd' => password_hash($createPwd, PASSWORD_BCRYPT), 'email' => $createMail]);
   }
 }
